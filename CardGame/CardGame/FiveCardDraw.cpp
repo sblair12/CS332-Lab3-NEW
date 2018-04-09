@@ -158,6 +158,11 @@ int FiveCardDraw::before_round()
 	int card_count = 0;
 	size_t index = (dealer_index + 1) % ptr_vector.size();
 	while (card_count < 5) {
+		if (draw_deck.size() == 0) {
+			cout << "No more cards in the deck" << endl;
+			int i = deck_out_of_cards;
+			throw i;
+		}
 		ptr_vector[index]->hand << draw_deck;
 		index = (index + 1) % ptr_vector.size();
 		if (index == (dealer_index + 1) % ptr_vector.size()) {
