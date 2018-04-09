@@ -61,77 +61,100 @@ int FiveCardDraw::before_turn(Player &player)
 	string input;
 	int number_discarded;
 
-	//Get number of cards to discard
-	while (input.length() != 1 || number_discarded > max_discard || number_discarded < min_discard) {
-		cout << "Please give a VALID number of cards to discard, from 0 to 5" << endl;
-		getline(cin, input);
-		if (input.length() == 1) {
-			istringstream iss(input);
-			iss >> number_discarded;
-		}
+	if (player.computer) {
+		number_discarded = computer_number_discarded();
 	}
-
-	cout << endl;
-	const int valid_string_length = 2 * number_discarded - 1;
-	size_t number;
-	input = invalid_string;
-
-
-	//Discard those cards from the Player hand
-	if (number_discarded < max_discard && number_discarded > 0) {
-		if (number_discarded == 1) {
-			cout << "What card to discard? (indices 1-5)" << endl;
-		}
-		else {
-			cout << "Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)" << endl;
-		}
-		while (input.length() != valid_string_length) {
-			number = 1000;
-			vector<size_t> to_remove;
-			cout << "Please give valid card indices, from 1 to 5" << endl;
+	else {
+		//Get number of cards to discard
+		while (input.length() != 1 || number_discarded > max_discard || number_discarded < min_discard) {
+			cout << "Please give a VALID number of cards to discard, from 0 to 5" << endl;
 			getline(cin, input);
-			if (input.length() == valid_string_length) {
-				istringstream iss_2(input);
-				int i;
-				for (i = 0; iss_2 >> number; ++i) {
-					if (number > max_discard || number < min_discard + 1) {
-						cout << "Invalid index: " << number << endl;
-						input = invalid_string;
-						break;
-					}
-					else {
-						for (int j = 0; j < to_remove.size(); ++j) {
-							if (number - 1 == to_remove[j]) {
-								cout << "Invalid index: " << number << endl;
-								input = invalid_string;
-								break;
-							}
-						}
-						to_remove.push_back(number - 1);
-					}
-				}
-				if (number == 1000 || i != number_discarded) {
-					cout << "Invalid index value" << endl;
-					input = invalid_string;
-				}
-				if (input.length() == valid_string_length && to_remove.size() > 0) {
-					remove_cards(to_remove, player);
-				}
+			if (input.length() == 1) {
+				istringstream iss(input);
+				iss >> number_discarded;
 			}
 		}
 	}
 
-	//Discard ALL cards
-	else if (number_discarded == max_discard) {
-		cout << "Discarding all cards" << endl;
-		vector<size_t> to_remove = { 0,1,2,3,4 };
-		remove_cards(to_remove, player);
+	cout << endl;
+
+	if (player.computer) {
+		if (number_discarded == max_discard) {
+			cout << "Discarding all cards" << endl;
+			vector<size_t> computer_remove = { 0,1,2,3,4 };
+			remove_cards(computer_remove, player);
+		}
+		else if (number_discarded == min_discard) {
+			cout << "No cards will be discarded" << endl;
+		}
+		else {
+			vector<size_t> computer_remove = computer_discard();
+			remove_cards(computer_remove, player);
+		}
+	}
+	else {
+		const int valid_string_length = 2 * number_discarded - 1;
+		size_t number;
+		input = invalid_string;
+
+
+		//Discard those cards from the Player hand
+		if (number_discarded < max_discard && number_discarded > 0) {
+			if (number_discarded == 1) {
+				cout << "What card to discard? (indices 1-5)" << endl;
+			}
+			else {
+				cout << "Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)" << endl;
+			}
+			while (input.length() != valid_string_length) {
+				number = 1000;
+				vector<size_t> to_remove;
+				cout << "Please give valid card indices, from 1 to 5" << endl;
+				getline(cin, input);
+				if (input.length() == valid_string_length) {
+					istringstream iss_2(input);
+					int i;
+					for (i = 0; iss_2 >> number; ++i) {
+						if (number > max_discard || number < min_discard + 1) {
+							cout << "Invalid index: " << number << endl;
+							input = invalid_string;
+							break;
+						}
+						else {
+							for (int j = 0; j < to_remove.size(); ++j) {
+								if (number - 1 == to_remove[j]) {
+									cout << "Invalid index: " << number << endl;
+									input = invalid_string;
+									break;
+								}
+							}
+							to_remove.push_back(number - 1);
+						}
+					}
+					if (number == 1000 || i != number_discarded) {
+						cout << "Invalid index value" << endl;
+						input = invalid_string;
+					}
+					if (input.length() == valid_string_length && to_remove.size() > 0) {
+						remove_cards(to_remove, player);
+					}
+				}
+			}
+		}
+
+		//Discard ALL cards
+		else if (number_discarded == max_discard) {
+			cout << "Discarding all cards" << endl;
+			vector<size_t> to_remove = { 0,1,2,3,4 };
+			remove_cards(to_remove, player);
+		}
+
+		//Discard NO cards
+		else {
+			cout << "No cards will be discarded" << endl;
+		}
 	}
 
-	//Discard NO cards
-	else {
-		cout << "No cards will be discarded" << endl;
-	}
 	return 0;
 }
 
@@ -361,6 +384,16 @@ void FiveCardDraw::players_join()
 			}
 		}
 	}
+}
+
+int FiveCardDraw::computer_number_discarded()
+{
+	return 0;
+}
+
+vector<size_t> FiveCardDraw::computer_discard()
+{
+	return vector<size_t>();
 }
 
 bool poker_rank_ptr(const shared_ptr<Player>&p1, const shared_ptr<Player>&p2)

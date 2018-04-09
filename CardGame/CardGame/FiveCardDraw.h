@@ -30,6 +30,8 @@ protected:
 	void players_leave();
 	//Ask players if they want to join
 	void players_join();
+	int computer_number_discarded();
+	vector<size_t> computer_discard();
 };
 
 bool poker_rank_ptr(const shared_ptr<Player>&, const shared_ptr<Player>&);
