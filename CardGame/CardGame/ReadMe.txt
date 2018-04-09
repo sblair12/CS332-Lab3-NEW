@@ -1,8 +1,7 @@
 // Shane Blair	- sblair@wustl.edu		-	448740
 // Steven Lee	- lee.steven@wustl.edu	-	448180
-//	ID: 	  448740 
-//	WUSTLKey: sblair
-// Lab 2: Card Decks and Hands
+
+// Lab 3: Five Card Draw
 
 For this lab, I implemented a program to:
 	- play a game called Five Card Draw
