@@ -221,7 +221,7 @@ int FiveCardDraw::after_round()
 
 	//Take cards from hands and throw them into the draw deck
 	for (int i = 0; i < ptr_vector.size(); ++i) {
-		for (int index = ptr_vector[i]->hand.size(); index >= 0 && index < ptr_vector[i]->hand.size(); --index) {
+		for (int index = ptr_vector[i]->hand.size() - 1; index >= 0 && index < ptr_vector[i]->hand.size(); --index) {
 			Card card = ptr_vector[i]->hand.remove_card(index);
 			draw_deck.add_card(card);
 		}
