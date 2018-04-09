@@ -83,8 +83,14 @@ void Game::add_player(const string player)
 	}
 	char * player_name = new char [player.length() + 1];
 	strcpy_s(player_name, player.length() + 1, player.c_str());
-	ptr_vector.push_back(make_shared<Player>(player_name));
-	cout << "Added: " << player << " to the game" << endl;
+	shared_ptr<Player> player_ptr = make_shared<Player>(player_name);
+	ptr_vector.push_back(player_ptr);
+	if (player_ptr->computer) {
+		cout << "Added: " << player_name << " (Computer)\tto the game" << endl;
+	}
+	else {
+		cout << "Added: " << player << "\t\tto the game" << endl;
+	}
 }
 
 shared_ptr<Player> Game::find_player(const string player)

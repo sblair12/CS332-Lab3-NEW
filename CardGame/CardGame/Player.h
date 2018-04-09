@@ -18,6 +18,7 @@ struct Player {
 	Hand hand;
 	unsigned int wins;
 	unsigned int losses;
+	bool computer = false;
 
 	Player(char *);
 	bool operator==(const Player&) const;

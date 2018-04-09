@@ -21,6 +21,11 @@ Player::Player(char * file_name)
 	wins = 0;
 	losses = 0;
 	ifstream ifs(name);
+	char last_char = file_name[strlen(file_name) - 1];
+	if (last_char == '*') {
+		computer = true;
+		file_name[strlen(file_name) - 1] = 0;
+	}
 
 	if (ifs.is_open()) {
 		string line_1, player_string;
