@@ -54,7 +54,9 @@ int main(int argc, char * argv[])
 			game_ptr->round();
 			game_ptr->after_round();
 		}
+		cout << "Not enough Players, ending game..." << endl;
 		game_ptr->stop_game();
+		cout << "Game ended!" << endl;
 	}
 	catch (int i) {
 		cout << "Exception caught: " << i << endl;
