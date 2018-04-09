@@ -1,7 +1,6 @@
 // Shane Blair	- sblair@wustl.edu		-	448740
 // Steven Lee	- lee.steven@wustl.edu	-	448180
-//	ID: 	  448740 
-//	WUSTLKey: sblair
+
 // Lab 3: Five Card Draw
 
 For this lab, I implemented a program to:
