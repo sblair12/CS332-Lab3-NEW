@@ -131,15 +131,235 @@ Produced:
 }
 
 9. {
-"CardGame fivecarddraw steven shane joel dan"
+"CardGame fivecarddraw shane steven joel dan"
 Produced:
-		Added: steven to the game
 		Added: shane to the game
+		Added: steven to the game
 		Added: joel to the game
 		Added: dan to the game
 
 
-		shane   7D      7H      JC      AC      AD
+		steven  2S      4H      5C      9S      KH
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		5
+
+		Discarding all cards
+		Discarding KH 9S 5C 4H 2S
+
+
+		joel    4S      5H      8S      10H     KD
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		5
+
+		Discarding all cards
+		Discarding KD 10H 8S 5H 4S
+
+
+		dan     3H      5D      8D      JS      AS
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		5
+
+		Discarding all cards
+		Discarding AS JS 8D 5D 3H
+
+
+		shane   2C      2H      3C      KC      AC
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		5
+
+		Discarding all cards
+		Discarding AC KC 3C 2H 2C
+
+
+		steven  4D      6D      9H      QD      AD
+
+		joel    3S      4C      8C      JC      KS
+
+		dan     3D      6C      8H      JH      QH
+
+		shane   7C      7H      7S      JD      AH
+
+		shane   Wins: 1 Losses: 0
+		7C      7H      7S      JD      AH              Three of a Kind
+		steven  Wins: 0 Losses: 1
+		4D      6D      9H      QD      AD              High Card
+		joel    Wins: 0 Losses: 1
+		3S      4C      8C      JC      KS              High Card
+		dan     Wins: 0 Losses: 1
+		3D      6C      8H      JH      QH              High Card
+		Does any Player want to leave? (Y/n)
+		y
+		Which Players would like to leave? (separate names with spaces, ex: joe bob bill
+		ybob)
+		dan
+		Finding: dan
+		Bye dan!
+		Do any new Players want to join? (Y/n)
+		y
+		Which Players would like to join? (separate names with spaces, ex: mao dan steve
+		bob)
+		dani
+		Adding: dani
+		Added: dani to the game
+		Hi dani!
+
+
+		joel    3C      6D      6S      7D      8C
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		5
+
+		Discarding all cards
+		Discarding 8C 7D 6S 6D 3C
+
+
+		dani    4C      4S      7H      AD      AH
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		5
+
+		Discarding all cards
+		Discarding AH AD 7H 4S 4C
+
+
+		shane   3H      7S      10D     QH      AC
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		5
+
+		Discarding all cards
+		Discarding AC QH 10D 7S 3H
+
+
+		steven  2C      4H      6H      8H      QC
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		5
+
+		Discarding all cards
+		Discarding QC 8H 6H 4H 2C
+
+
+		joel    5H      9H      JH      QS      KC
+
+		dani    2H      2S      5C      7C      10S
+
+		shane   3S      9S      10C     JC      JS
+
+		steven  5D      8S      10H     QD      KH
+
+		shane   Wins: 2 Losses: 0
+		3S      9S      10C     JC      JS              One Pair
+		dani    Wins: 0 Losses: 1
+		2H      2S      5C      7C      10S             One Pair
+		steven  Wins: 0 Losses: 2
+		5D      8S      10H     QD      KH              High Card
+		joel    Wins: 0 Losses: 2
+		5H      9H      JH      QS      KC              High Card
+		Does any Player want to leave? (Y/n)
+		y
+		Which Players would like to leave? (separate names with spaces, ex: joe bob bill
+		ybob)
+		shane steven joel
+		Finding: shane
+		Bye shane!
+		Finding: steven
+		Bye steven!
+		Finding: joel
+		Bye joel!
+		Do any new Players want to join? (Y/n)
+		y
+		Which Players would like to join? (separate names with spaces, ex: mao dan steve
+		bob)
+		shana
+		Adding: shana
+		Added: shana to the game
+		Hi shana!
+
+
+		shana   5S      7S      8D      8S      10H
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		5
+
+		Discarding all cards
+		Discarding 10H 8S 8D 7S 5S
+
+
+		dani    2H      5D      7H      QD      KH
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		5
+
+		Discarding all cards
+		Discarding KH QD 7H 5D 2H
+
+
+		shana   4C      8C      JH      JS      KD
+
+		dani    3H      4S      7C      9H      JC
+
+		shana   Wins: 1 Losses: 0
+		4C      8C      JH      JS      KD              One Pair
+		dani    Wins: 0 Losses: 2
+		3H      4S      7C      9H      JC              High Card
+		Does any Player want to leave? (Y/n)
+		y
+		Which Players would like to leave? (separate names with spaces, ex: joe bob bill
+		ybob)
+		shana
+		Finding: shana
+		Bye shana!
+		Do any new Players want to join? (Y/n)
+		n
+}
+
+10. {
+"CardGame fivecarddraw steven shane joel christian"
+		Added: steven to the game
+		Added: shane to the game
+		Added: joel to the game
+		Added: christian to the game
+
+
+		shane   5S      7C      9D      10D     AS
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		2
+
+		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
+		Please give valid card indices, from 1 to 5
+		3 4
+		Discarding 10D 9D
+
+
+		joel    2D      7H      8D      JC      QH
 
 
 		How many cards to discard?
@@ -149,10 +369,10 @@ Produced:
 		What card to discard? (indices 1-5)
 		Please give valid card indices, from 1 to 5
 		3
-		Discarding JC
+		Discarding 8D
 
 
-		joel    4H      6S      7C      8D      KC
+		christian       3H      5D      6S      8C      KH
 
 
 		How many cards to discard?
@@ -160,10 +380,10 @@ Produced:
 		5
 
 		Discarding all cards
-		Discarding KC 8D 7C 6S 4H
+		Discarding KH 8C 6S 5D 3H
 
 
-		dan     4C      4D      4S      10H     QH
+		steven  3C      4S      8H      10C     AC
 
 
 		How many cards to discard?
@@ -173,58 +393,33 @@ Produced:
 		No cards will be discarded
 
 
-		steven  2H      3S      5S      9H      QC
+		shane   2H      5S      7C      8S      AS
 
+		joel    2D      6C      7H      JC      QH
 
-		How many cards to discard?
-		Please give a VALID number of cards to discard, from 0 to 5
-		2
+		christian       2S      3D      4H      5C      QD
 
-		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
-		Please give valid card indices, from 1 to 5
-		4 5
-		Discarding QC 9H
+		steven  3C      4S      8H      10C     AC
 
-
-		shane   7D      7H      AC      AD      AH
-
-		joel    3C      5C      8C      10D     KD
-
-		dan     4C      4D      4S      10H     QH
-
-		steven  2H      3S      5S      JS      QS
-
-		shane   Wins: 1 Losses: 0
-		7D      7H      AC      AD      AH              Full House
-		dan     Wins: 0 Losses: 1
-		4C      4D      4S      10H     QH              Three of a Kind
-		joel    Wins: 0 Losses: 1
-		3C      5C      8C      10D     KD              High Card
-		steven  Wins: 0 Losses: 1
-		2H      3S      5S      JS      QS              High Card
+		shane   Wins: 3 Losses: 0
+		2H      5S      7C      8S      AS              High Card
+		steven  Wins: 0 Losses: 3
+		3C      4S      8H      10C     AC              High Card
+		joel    Wins: 0 Losses: 3
+		2D      6C      7H      JC      QH              High Card
+		christian       Wins: 0 Losses: 1
+		2S      3D      4H      5C      QD              High Card
 		Does any Player want to leave? (Y/n)
-		y
-		Which Players would like to leave? (separate names with spaces, ex: joe bob bill
-		ybob)
-		dan
-		Finding: dan
-		Bye dan!
+		n^C
+		C:\Users\lee.steven\Source\Repos\CS332-Lab3-NEW\CardGame\x64\Debug>cardgame five
+		carddraw shane steven joel christian
+		Added: shane to the game
+		Added: steven to the game
+		Added: joel to the game
+		Added: christian to the game
 
 
-		joel    2C      3S      5H      7D      10S
-
-
-		How many cards to discard?
-		Please give a VALID number of cards to discard, from 0 to 5
-		2
-
-		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
-		Please give valid card indices, from 1 to 5
-		4 5
-		Discarding 10S 7D
-
-
-		steven  3H      7S      9D      JD      QD
+		steven  3D      7H      8D      9D      QS
 
 
 		How many cards to discard?
@@ -232,56 +427,40 @@ Produced:
 		5
 
 		Discarding all cards
-		Discarding QD JD 9D 7S 3H
+		Discarding QS 9D 8D 7H 3D
 
 
-		shane   6C      8C      QC      KC      KH
-
-
-		How many cards to discard?
-		Please give a VALID number of cards to discard, from 0 to 5
-		0
-
-		No cards will be discarded
-
-
-		joel    2C      3S      5H      6S      10H
-
-		steven  2D      5D      5S      8D      10D
-
-		shane   6C      8C      QC      KC      KH
-
-		shane   Wins: 2 Losses: 0
-		6C      8C      QC      KC      KH              One Pair
-		steven  Wins: 0 Losses: 2
-		2D      5D      5S      8D      10D             One Pair
-		joel    Wins: 0 Losses: 2
-		2C      3S      5H      6S      10H             High Card
-		Does any Player want to leave? (Y/n)
-		y
-		Which Players would like to leave? (separate names with spaces, ex: joe bob bill
-		ybob)
-		joel
-		Finding: joel
-		Bye joel!
-
-
-		shane   2D      3C      4D      8D      9S
+		joel    3C      4H      7C      8C      JH
 
 
 		How many cards to discard?
 		Please give a VALID number of cards to discard, from 0 to 5
+		1
+
+		What card to discard? (indices 1-5)
+		Please give valid card indices, from 1 to 5
 		3
+		Discarding 7C
+
+
+		christian       2C      4D      7D      10C     AH
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		2
 
 		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
 		Please give valid card indices, from 1 to 5
-		3
+		5 2 3
 		Please give valid card indices, from 1 to 5
-		3 1 4
-		Discarding 8D 4D 2D
+		5 2 3
+		Please give valid card indices, from 1 to 5
+		5 2
+		Discarding AH 4D
 
 
-		steven  4C      5S      8H      JC      QD
+		shane   3H      JS      QH      KC      KD
 
 
 		How many cards to discard?
@@ -290,168 +469,61 @@ Produced:
 
 		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
 		Please give valid card indices, from 1 to 5
-		5 4 2 1
-		Discarding QD JC 5S 4C
+		1 3 4 5
+		Discarding KD KC QH 3H
 
 
-		shane   3C      4S      7S      9S      10C
+		steven  3S      4C      9C      9S      KH
 
-		steven  6H      7H      8H      9C      KD
+		joel    3C      4H      8C      JH      AS
 
-		steven  Wins: 1 Losses: 2
-		6H      7H      8H      9C      KD              High Card
-		shane   Wins: 2 Losses: 1
-		3C      4S      7S      9S      10C             High Card
-		Does any Player want to leave? (Y/n)
-		y
-		Which Players would like to leave? (separate names with spaces, ex: joe bob bill
-		ybob)
-		steven
-		Finding: steven
-		Bye steven!
-}
+		christian       2C      7D      7S      10C     QD
 
-10. {
-"CardGame fivecarddraw shane steve joel dan"
-Produced: 
-		Added: shane to the game
-		Added: steve to the game
-		Added: joel to the game
-		Added: dan to the game
+		shane   2S      6H      6S      10S     JS
 
-
-		steve   4S      6D      9S      QH      AH
-
-
-		How many cards to discard?
-		Please give a VALID number of cards to discard, from 0 to 5
-		5
-
-		Discarding all cards
-		Discarding AH QH 9S 6D 4S
-
-
-		joel    2H      3D      7S      10C     JS
-
-
-		How many cards to discard?
-		Please give a VALID number of cards to discard, from 0 to 5
-		5
-
-		Discarding all cards
-		Discarding JS 10C 7S 3D 2H
-
-
-		dan     3S      9D      QC      QS      KH
-
-
-		How many cards to discard?
-		Please give a VALID number of cards to discard, from 0 to 5
-		5
-
-		Discarding all cards
-		Discarding KH QS QC 9D 3S
-
-
-		shane   3H      5D      7D      9C      AD
-
-
-		How many cards to discard?
-		Please give a VALID number of cards to discard, from 0 to 5
-		5
-
-		Discarding all cards
-		Discarding AD 9C 7D 5D 3H
-
-
-		steve   5S      6C      QD      KD      AS
-
-		joel    2D      3C      4C      5C      10H
-
-		dan     5H      6H      7C      7H      8H
-
-		shane   4H      8S      10D     10S     JC
-
-		shane   Wins: 1 Losses: 0
-		4H      8S      10D     10S     JC              One Pair
-		dan     Wins: 0 Losses: 1
-		5H      6H      7C      7H      8H              One Pair
-		steve   Wins: 0 Losses: 1
-		5S      6C      QD      KD      AS              High Card
+		steven  Wins: 1 Losses: 0
+		3S      4C      9C      9S      KH              One Pair
+		christian       Wins: 0 Losses: 1
+		2C      7D      7S      10C     QD              One Pair
+		shane   Wins: 0 Losses: 1
+		2S      6H      6S      10S     JS              One Pair
 		joel    Wins: 0 Losses: 1
-		2D      3C      4C      5C      10H             High Card
+		3C      4H      8C      JH      AS              High Card
 		Does any Player want to leave? (Y/n)
 		y
 		Which Players would like to leave? (separate names with spaces, ex: joe bob bill
 		ybob)
-		shane bob
+		christian shane steven
+		Finding: christian
+		Bye christian!
 		Finding: shane
 		Bye shane!
-		Finding: bob
-		Invalid name: bob
-
-
-		dan     4C      6D      9H      JH      KS
-
-
-		How many cards to discard?
-		Please give a VALID number of cards to discard, from 0 to 5
-		5
-
-		Discarding all cards
-		Discarding KS JH 9H 6D 4C
-
-
-		steve   3H      6H      JC      JD      KC
-
-
-		How many cards to discard?
-		Please give a VALID number of cards to discard, from 0 to 5
-		5
-
-		Discarding all cards
-		Discarding KC JD JC 6H 3H
-
-
-		joel    2S      4H      QC      KH      AH
-
-
-		How many cards to discard?
-		Please give a VALID number of cards to discard, from 0 to 5
-		5
-
-		Discarding all cards
-		Discarding AH KH QC 4H 2S
-
-
-		dan     3C      4D      5H      10S     QS
-
-		steve   6S      9D      10D     JS      AC
-
-		joel    7C      8D      9C      10C     KD
-
-		steve   Wins: 1 Losses: 1
-		6S      9D      10D     JS      AC              High Card
-		joel    Wins: 0 Losses: 2
-		7C      8D      9C      10C     KD              High Card
-		dan     Wins: 0 Losses: 2
-		3C      4D      5H      10S     QS              High Card
-		Does any Player want to leave? (Y/n)
-		yes
-		Does any Player want to leave? (Y/n)
-		dan shane
-		Does any Player want to leave? (Y/n)
+		Finding: steven
+		Bye steven!
+		Do any new Players want to join? (Y/n)
 		y
-		Which Players would like to leave? (separate names with spaces, ex: joe bob bill
-		ybob)
-		dan shane
-		Finding: dan
-		Bye dan!
-		Finding: shane
-		Invalid name: shane
+		Which Players would like to join? (separate names with spaces, ex: mao dan steve
+		bob)
+		christina
+		Adding: christina
+		Added: christina to the game
+		Hi christina!
 
 
-		joel    3H      10C     10S     QC      QS
+		joel    2H      3S      4S      9S      AD
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		2
+
+		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
+		Please give valid card indices, from 1 to 5
+		4 5
+		Discarding AD 9S
+
+
+		christina       5S      10D     JD      KD      KS
 
 
 		How many cards to discard?
@@ -459,28 +531,17 @@ Produced:
 		5
 
 		Discarding all cards
-		Discarding QS QC 10S 10C 3H
+		Discarding KS KD JD 10D 5S
 
 
-		steve   3C      3S      5C      5D      7H
+		joel    2H      3S      4S      6D      6S
 
+		christina       5C      5D      9C      10C     JC
 
-		How many cards to discard?
-		Please give a VALID number of cards to discard, from 0 to 5
-		5
-
-		Discarding all cards
-		Discarding 7H 5D 5C 3S 3C
-
-
-		joel    4H      6D      8S      10D     JS
-
-		steve   2C      4D      7C      10H     KH
-
-		steve   Wins: 2 Losses: 1
-		2C      4D      7C      10H     KH              High Card
-		joel    Wins: 0 Losses: 3
-		4H      6D      8S      10D     JS              High Card
+		joel    Wins: 1 Losses: 1
+		2H      3S      4S      6D      6S              One Pair
+		christina       Wins: 0 Losses: 1
+		5C      5D      9C      10C     JC              One Pair
 		Does any Player want to leave? (Y/n)
 		y
 		Which Players would like to leave? (separate names with spaces, ex: joe bob bill
@@ -488,4 +549,6 @@ Produced:
 		joel
 		Finding: joel
 		Bye joel!
+		Do any new Players want to join? (Y/n)
+		n
 }
