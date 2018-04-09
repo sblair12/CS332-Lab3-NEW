@@ -3,10 +3,14 @@
 
 // Lab 3: Five Card Draw
 
-For this lab, I implemented a program to:
-	- play a game called Five Card Draw
+For this lab, we implemented a program to:
+	- play a game called Five Card Draw as instructed
 
 For method functions see comments in source files
+
+NOTE:	Selections require space separated items, without an extra space at the end, for input to be valid.
+		If too many or too few items are given, the program will ask for the selections to be input again.
+		This is the intended functionality.
 
 Error Codes:
 	0 - No runtime errors
@@ -66,6 +70,7 @@ Produces:
 		Unknown game type: poker
 		Exception caught: 11
 }
+Error Code: 11
 
 5. {
 
@@ -75,6 +80,7 @@ Produced:
 		shane is already playing
 		Exception caught: 13
 }
+Error Code: 13
 
 6. {
 
@@ -86,6 +92,7 @@ Produced:
 		shane is already playing
 		Exception caught: 13
 }
+Error Code: 13
 
 7. {
 
