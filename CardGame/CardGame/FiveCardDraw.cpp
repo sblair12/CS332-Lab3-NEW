@@ -14,6 +14,7 @@
 #include "Parse.h"
 #include "Hand.h"
 
+#include <fstream>
 #include <sstream>
 #include <algorithm>
 using namespace std;
@@ -222,6 +223,47 @@ int FiveCardDraw::after_round()
 
 	//Take cards from discard deck and throw them into the draw deck
 	draw_deck.deck.insert(draw_deck.deck.end(), discard_deck.deck.begin(), discard_deck.deck.end());
+
+	//Ask users if they want to leave
+	string input;
+	bool leave = false;
+	bool correct = false;
+	while (input.length() != 1 || !correct) {
+		cout << "Does any Player want to leave?" << endl;
+		getline(cin, input);
+		if (input.length() == 1) {
+			if (input[0] == 'Y' || input[0] == 'y') {
+				leave = true;
+				correct = true;
+			}
+			if (input[0] == 'N' || input[0] == 'n') {
+				leave = false;
+				correct = true;
+			}
+		}
+	}
+
+	if (leave) {
+		//Get names of Players who are leaving
+		cout << "Which Players would like to leave? (separate names with spaces, ex: joe bob billybob)" << endl;
+		getline(cin, input);
+		string name;
+		istringstream iss(input);
+
+		while (iss >> name) {
+			cout << "Finding: " << name << endl;
+			shared_ptr<Player> player = find_player(name);
+			if (player) {
+				ofstream ofs(name);
+				if (ofs.is_open()) {
+					ofs << *player;
+				}
+			}
+			else {
+				cout << "Invalid name: " << name << endl;
+			}
+		}
+	}
 	return 0;
 }
 
