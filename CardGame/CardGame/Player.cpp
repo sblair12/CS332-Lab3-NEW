@@ -39,6 +39,11 @@ Player::Player(char * file_name)
 	}
 }
 
+bool Player::operator==(const Player &p) const
+{
+	return name == p.name;
+}
+
 ostream & operator<<(ostream &o, const Player &p)
 {
 	o << p.name << " " << p.wins << " " << p.losses;

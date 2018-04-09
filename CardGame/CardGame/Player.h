@@ -20,6 +20,7 @@ struct Player {
 	unsigned int losses;
 
 	Player(char *);
+	bool operator==(const Player&) const;
 };
 
 ostream & operator<<(ostream &, const Player &);

@@ -265,7 +265,15 @@ int FiveCardDraw::after_round()
 				if (ofs.is_open()) {
 					ofs << *player;
 				}
-				ptr_vector.erase(remove(ptr_vector.begin(), ptr_vector.end(), player), ptr_vector.end());
+				for (auto i = ptr_vector.begin(); i != ptr_vector.end(); ++i) {
+					shared_ptr<Player> compare = *i;
+					if (*player.get() == *compare.get()) {
+						cout << "Bye " << name << "!" << endl;
+						ptr_vector.erase(i);
+						break;
+					}
+				}
+//				ptr_vector.erase(remove(ptr_vector.begin(), ptr_vector.end(), player), ptr_vector.end());
 			}
 			else {
 				cout << "Invalid name: " << name << endl;
