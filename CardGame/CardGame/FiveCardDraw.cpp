@@ -233,10 +233,10 @@ void FiveCardDraw::print_rankings()
 
 bool poker_rank_ptr(const shared_ptr<Player>&p1, const shared_ptr<Player>&p2)
 {
-	if (p1) {
+	if (!p1) {
 		return false;
 	}
-	if (p2) {
+	if (!p2) {
 		return true;
 	}
 	return poker_rank(p1->hand, p2->hand);
