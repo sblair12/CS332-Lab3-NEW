@@ -55,6 +55,7 @@ int main(int argc, char * argv[])
 			game_ptr->after_round();
 		}
 		cout << "Not enough Players, ending game..." << endl;
+
 		game_ptr->stop_game();
 		cout << "Game ended!" << endl;
 	}
@@ -63,57 +64,6 @@ int main(int argc, char * argv[])
 		return i;
 	}
 	return 0;
-}
-
-void run(Deck deck) {
-	cout << endl;
-	cout << "DECK before dealing:" << endl;
-	cout << deck << endl;
-	vector<Hand> hands;
-
-	//Create hands
-	for (int i = 0; i < hand_number; ++i) {
-		hands.push_back(Hand());
-	}
-
-	//Deal to hands
-	for (int round = 0; round < card_number; ++round) {
-		for (int i = 0; i < hand_number; ++i) {
-			if (deck.size() == 0) {
-				cout << hand_number << " hands total" << endl;
-				cout << "Not enough cards in the deck to deal " << card_number << " cards to all hands" << endl;
-				int exception = out_of_cards;
-				throw exception;
-			}
-			hands[i] << deck;
-		}
-	}
-	cout << "DECK after dealing:" << endl;
-	cout << deck << endl;
-	cout << "HANDS:" << endl;
-
-	for (int i = 0; i < hand_number; ++i) {
-		rankHand(hands[i]);
-		cout << hands[i] << endl;
-	}
-
-	sort(hands.begin(), hands.end());
-
-	cout << endl;
-	cout << "HANDS sorted by less than operator:" << endl;
-	for (int i = 0; i < hand_number; ++i) {
-		cout << hands[i] << endl;
-	}
-
-	sort(hands.begin(), hands.end(), poker_rank);
-
-	cout << endl;
-	cout << "HANDS sorted by Poker ranking:" << endl;
-	for (int i = 0; i < hand_number; ++i) {
-		rankHand(hands[i]);
-		cout << hands[i] << poker_text[hands[i].get_poker()] << endl;
-	}
-
 }
 
 //Helper function to print out program's usage method
