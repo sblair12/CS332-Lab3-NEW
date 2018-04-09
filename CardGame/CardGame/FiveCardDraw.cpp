@@ -270,6 +270,8 @@ int FiveCardDraw::after_round()
 			}
 		}
 	}
+
+	dealer_index = (dealer_index + 1) % ptr_vector.size();
 	return 0;
 }
 

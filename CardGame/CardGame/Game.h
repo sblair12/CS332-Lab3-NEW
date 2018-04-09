@@ -22,6 +22,7 @@ public:
 	static void stop_game();
 	void add_player(const string player);
 	shared_ptr<Player> find_player(const string player);
+	size_t player_size();
 
 	//Pure virtual methods
 	virtual int before_turn(Player &) = 0;

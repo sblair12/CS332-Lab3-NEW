@@ -1,4 +1,4 @@
-// FiveCard.cpp : Defines the entry point for the console application.
+// CardGame.cpp : Defines the entry point for the console application.
 //
 // Authors:
 // Shane Blair sblair@wustl.edu 
@@ -49,14 +49,18 @@ int main(int argc, char * argv[])
 		for (int i = player_name_index; i < argc; ++i) {
 			game_ptr->add_player(argv[i]);
 		}
-		game_ptr->before_round();
-		game_ptr->round();
-		game_ptr->after_round();
+		while (game_ptr->player_size() >= 2) {
+			game_ptr->before_round();
+			game_ptr->round();
+			game_ptr->after_round();
+		}
+		game_ptr->stop_game();
 	}
 	catch (int i) {
 		cout << "Exception caught: " << i << endl;
 		return i;
 	}
+	return 0;
 }
 
 void run(Deck deck) {

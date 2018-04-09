@@ -95,3 +95,8 @@ shared_ptr<Player> Game::find_player(const string player)
 	}
 	return ptr;
 }
+
+size_t Game::player_size()
+{
+	return ptr_vector.size();
+}
