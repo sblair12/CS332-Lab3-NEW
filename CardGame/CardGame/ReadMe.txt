@@ -20,7 +20,15 @@ Error Codes:
 	5 - Two parameters but no shuffle parameter
 	6 - Two shuffle parameters
 	7 - The deck ran out of cards before dealing the desired number to each hand
-       -1 - Unexpected error
+	8 - The index was out of bounds
+	9 - Instance has not been created yet so cannot be pulled
+	10 - Game has already started
+	11 - Game entered was not in set 
+	12 - There is no game in progress
+	13 - Player is already playing/in the game
+	14 - No more Cards available in Deck
+	   -1 - Unexpected error
+
 
 Build is successful; no errors or warnings reported
 
