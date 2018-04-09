@@ -386,12 +386,14 @@ void FiveCardDraw::players_join()
 	}
 }
 
-int FiveCardDraw::computer_number_discarded()
+int FiveCardDraw::computer_number_discarded(Player p)
 {
+	rankHand(p.hand);
+	if (p.hand.get_poker == straight_flush || p.hand.get_poker)
 	return 0;
 }
 
-vector<size_t> FiveCardDraw::computer_discard()
+vector<size_t> FiveCardDraw::computer_discard(Player p)
 {
 	return vector<size_t>();
 }
