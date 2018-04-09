@@ -5,9 +5,13 @@
 // Lab 2: Card Decks and Hands
 
 For this lab, I implemented a program to:
-	- Take in a deck of card strings
-	- Deal valid cards from the deck to hands
-	- Evaluate the hands lexically and by Poker ranking
+
+
+A D D    S U M M A R Y		H E R E
+
+
+
+
 
 For method functions see comments in source files
 
@@ -63,8 +67,54 @@ Produces:
 }
 
 4. {
+
 "CardGame poker shane steven"
 Produces:
 		Unknown game type: poker
 		Exception caught: 11
 }
+
+5. {
+
+"CardGame fivecarddraw shane shane"
+Produced:
+		Added: shane to the game
+		shane is already playing
+		Exception caught: 13
+}
+
+6. {
+
+"CardGame fivecarddraw shane steven joel shane"
+Produced:
+		Added: shane to the game
+		Added: steven to the game
+		Added: joel to the game
+		shane is already playing
+		Exception caught: 13
+}
+
+7. {
+
+"CardGame shane steven joel dan fr soel jao josh t dannn throww"
+Produces:
+		Added: shane to the game
+		Added: steven to the game
+		Added: joel to the game
+		Added: dan to the game
+		Added: fr to the game
+		Added: soel to the game
+		Added: jao to the game
+		Added: josh to the game
+		Added: t to the game
+		Added: dannn to the game
+		Added: throww to the game
+		No more cards in the deck
+		Exception caught: 14
+}
+
+Typed in f and discarded, -
+Doesnt work for "please give valid card indices"
+but works for "please give a VALID number of cards to discard"
+Said it was discarding
+Didn't discard anything in the hand thou
