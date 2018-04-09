@@ -45,7 +45,7 @@ Produces:
 
 2. {
 
-"CardGame" fivecarddraw
+"CardGame fivecarddraw"
 Produces:
 		Usage: cardgame <game_name> <player1> <player2> ...
 				Run this program with one argument for a game name and 2 or more arguments for player names
@@ -55,9 +55,16 @@ Produces:
 
 3. {
 
-"CardGame" fivecarddraw Shane
+"CardGame fivecarddraw Shane"
 Produces:
 		Usage: CardGame <game_name> <player1> <player2> ...
                 Run this program with one argument for a game name and 2 or more arguments for player names
                 (ex: CardGame fivecarddraw billybob Mao)
+}
+
+4. {
+"CardGame poker shane steven"
+Produces:
+		Unknown game type: poker
+		Exception caught: 11
 }
