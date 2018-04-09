@@ -86,12 +86,14 @@ int FiveCardDraw::before_turn(Player &player)
 			cout << "Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)" << endl;
 		}
 		while (input.length() != valid_string_length) {
+			number = 1000;
 			vector<size_t> to_remove;
 			cout << "Please give valid card indices, from 1 to 5" << endl;
 			getline(cin, input);
 			if (input.length() == valid_string_length) {
 				istringstream iss_2(input);
-				for (int i = 0; iss_2 >> number;) {
+				int i;
+				for (i = 0; iss_2 >> number; ++i) {
 					if (number > max_discard || number < min_discard + 1) {
 						cout << "Invalid index: " << number << endl;
 						input = invalid_string;
@@ -108,7 +110,11 @@ int FiveCardDraw::before_turn(Player &player)
 						to_remove.push_back(number - 1);
 					}
 				}
-				if (input.length() == valid_string_length) {
+				if (number == 1000 || i != number_discarded) {
+					cout << "Invalid index value" << endl;
+					input = invalid_string;
+				}
+				if (input.length() == valid_string_length && to_remove.size() > 0) {
 					remove_cards(to_remove, player);
 				}
 			}
@@ -229,7 +235,7 @@ int FiveCardDraw::after_round()
 	bool leave = false;
 	bool correct = false;
 	while (input.length() != 1 || !correct) {
-		cout << "Does any Player want to leave?" << endl;
+		cout << "Does any Player want to leave? (Y/n)" << endl;
 		getline(cin, input);
 		if (input.length() == 1) {
 			if (input[0] == 'Y' || input[0] == 'y') {
