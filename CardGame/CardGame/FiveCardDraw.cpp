@@ -265,6 +265,7 @@ int FiveCardDraw::after_round()
 				if (ofs.is_open()) {
 					ofs << *player;
 				}
+				ptr_vector.erase(remove(ptr_vector.begin(), ptr_vector.end(), player), ptr_vector.end());
 			}
 			else {
 				cout << "Invalid name: " << name << endl;
