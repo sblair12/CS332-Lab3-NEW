@@ -231,7 +231,38 @@ int FiveCardDraw::after_round()
 	draw_deck.deck.insert(draw_deck.deck.end(), discard_deck.deck.begin(), discard_deck.deck.end());
 	discard_deck = Deck();
 
-	//Ask users if they want to leave
+	try {
+		players_leave();
+		players_join();
+	}
+	catch (int i) {
+		throw i;
+	}
+
+	dealer_index = (dealer_index + 1) % ptr_vector.size();
+	return 0;
+}
+
+void FiveCardDraw::print_rankings()
+{
+	for (int i = 0; i < ptr_vector.size(); ++i) {
+		rankHand(ptr_vector[i]->hand);
+	}
+	vector<shared_ptr<Player>> ptr_temp = ptr_vector;
+	sort(ptr_temp.begin(), ptr_temp.end(), poker_rank_ptr);
+	ptr_temp[0]->wins++;
+	cout << ptr_temp[0]->name << "\t" << "Wins: " << ptr_temp[0]->wins << " Losses: " << ptr_temp[0]->losses << endl;
+	cout << ptr_temp[0]->hand << "\t" << poker_text[ptr_temp[0]->hand.get_poker()] << endl;
+
+	for (int i = 1; i < ptr_temp.size(); ++i) {
+		ptr_temp[i]->losses++;
+		cout << ptr_temp[i]->name << "\t" << "Wins: " << ptr_temp[i]->wins << " Losses: " << ptr_temp[i]->losses << endl;
+		cout << ptr_temp[i]->hand << "\t" << poker_text[ptr_temp[i]->hand.get_poker()] << endl;
+	}
+}
+
+void FiveCardDraw::players_leave()
+{
 	string input;
 	bool leave = false;
 	bool correct = false;
@@ -265,6 +296,7 @@ int FiveCardDraw::after_round()
 				if (ofs.is_open()) {
 					ofs << *player;
 				}
+				ofs.close();
 				for (auto i = ptr_vector.begin(); i != ptr_vector.end(); ++i) {
 					shared_ptr<Player> compare = *i;
 					if (*player.get() == *compare.get()) {
@@ -273,33 +305,62 @@ int FiveCardDraw::after_round()
 						break;
 					}
 				}
-//				ptr_vector.erase(remove(ptr_vector.begin(), ptr_vector.end(), player), ptr_vector.end());
 			}
 			else {
 				cout << "Invalid name: " << name << endl;
 			}
 		}
 	}
-
-	dealer_index = (dealer_index + 1) % ptr_vector.size();
-	return 0;
 }
 
-void FiveCardDraw::print_rankings()
+void FiveCardDraw::players_join()
 {
-	for (int i = 0; i < ptr_vector.size(); ++i) {
-		rankHand(ptr_vector[i]->hand);
+	string input;
+	bool join = false;
+	bool correct = false;
+	while (input.length() != 1 || !correct) {
+		cout << "Do any new Players want to join? (Y/n)" << endl;
+		getline(cin, input);
+		if (input.length() == 1) {
+			if (input[0] == 'Y' || input[0] == 'y') {
+				join = true;
+				correct = true;
+			}
+			if (input[0] == 'N' || input[0] == 'n') {
+				join = false;
+				correct = true;
+			}
+		}
 	}
-	vector<shared_ptr<Player>> ptr_temp = ptr_vector;
-	sort(ptr_temp.begin(), ptr_temp.end(), poker_rank_ptr);
-	ptr_temp[0]->wins++;
-	cout << ptr_temp[0]->name << "\t" << "Wins: " << ptr_temp[0]->wins << " Losses: " << ptr_temp[0]->losses << endl;
-	cout << ptr_temp[0]->hand << "\t" << poker_text[ptr_temp[0]->hand.get_poker()] << endl;
 
-	for (int i = 1; i < ptr_temp.size(); ++i) {
-		ptr_temp[i]->losses++;
-		cout << ptr_temp[i]->name << "\t" << "Wins: " << ptr_temp[i]->wins << " Losses: " << ptr_temp[i]->losses << endl;
-		cout << ptr_temp[i]->hand << "\t" << poker_text[ptr_temp[i]->hand.get_poker()] << endl;
+	if (join) {
+		//Get names of Players who want to join
+		cout << "Which Players would like to join? (separate names with spaces, ex: mao dan stevebob)" << endl;
+		getline(cin, input);
+		string name;
+		istringstream iss(input);
+
+		while (iss >> name) {
+			cout << "Adding: " << name << endl;
+			shared_ptr<Player> player = find_player(name);
+			if (!player) {
+				try{
+					add_player(name);
+					cout << "Hi " << name << "!" << endl;
+				}
+				catch (int i) {
+					if (i == 13) {
+						cout << "Player: " << name << " is already in the game!" << endl;
+					}
+					else {
+						throw i;
+					}
+				}
+			}
+			else {
+				cout << "Invalid name: " << name << endl;
+			}
+		}
 	}
 }
 

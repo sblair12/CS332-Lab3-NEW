@@ -26,6 +26,8 @@ protected:
 	size_t dealer_index;
 	Deck discard_deck;
 	void print_rankings();
+	void players_leave();
+	void players_join();
 };
 
 bool poker_rank_ptr(const shared_ptr<Player>&, const shared_ptr<Player>&);
