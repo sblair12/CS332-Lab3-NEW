@@ -558,3 +558,9 @@ Produced:
 		Do any new Players want to join? (Y/n)
 		n
 }
+
+EXTRA CREDIT:
+
+Note: A computer Player can become a normal, user-driven Player if the computer leaves and the user takes the computer's name.
+This is intended behavior.
+
