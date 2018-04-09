@@ -5,13 +5,7 @@
 // Lab 2: Card Decks and Hands
 
 For this lab, I implemented a program to:
-
-
-A D D    S U M M A R Y		H E R E
-
-
-
-
+	- play a game called Five Card Draw
 
 For method functions see comments in source files
 
@@ -113,8 +107,25 @@ Produces:
 		Exception caught: 14
 }
 
-Typed in f and discarded, -
-Doesnt work for "please give valid card indices"
-but works for "please give a VALID number of cards to discard"
-Said it was discarding
-Didn't discard anything in the hand thou
+8. {
+
+"CardGame fivecarddraw steven shane"
+Produced:
+		Added: steven to the game
+		Added: shane to the game
+
+
+		shane   2H      5C      10C     JC      JH
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		2
+
+		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
+		Please give valid card indices, from 1 to 5
+		1 1
+		Invalid index: 1
+		Please give valid card indices, from 1 to 5
+		...
+}
