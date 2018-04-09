@@ -162,6 +162,7 @@ int FiveCardDraw::after_turn(Player &player)
 int FiveCardDraw::before_round()
 {
 	draw_deck.shuffle();
+	cout << draw_deck << endl;
 	int card_count = 0;
 	size_t index = (dealer_index + 1) % ptr_vector.size();
 	while (card_count < 5) {
@@ -225,6 +226,8 @@ int FiveCardDraw::after_round()
 			Card card = ptr_vector[i]->hand.remove_card(index);
 			draw_deck.add_card(card);
 		}
+		cout << "Discarded hand: " << endl;
+		cout << ptr_vector[i]->hand << endl;
 	}
 
 	//Take cards from discard deck and throw them into the draw deck
