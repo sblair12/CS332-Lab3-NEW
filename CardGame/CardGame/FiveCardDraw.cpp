@@ -91,7 +91,7 @@ int FiveCardDraw::before_turn(Player &player)
 			if (input.length() == valid_string_length) {
 				istringstream iss_2(input);
 				for (int i = 0; iss_2 >> number;) {
-					if (number > max_discard || number < min_discard) {
+					if (number > max_discard || number < min_discard + 1) {
 						cout << "Invalid index: " << number << endl;
 						input = invalid_string;
 						break;
