@@ -163,6 +163,7 @@ int FiveCardDraw::before_round()
 {
 	draw_deck.shuffle();
 	cout << draw_deck << endl;
+	cout << draw_deck.size() << endl;
 	int card_count = 0;
 	size_t index = (dealer_index + 1) % ptr_vector.size();
 	while (card_count < 5) {
