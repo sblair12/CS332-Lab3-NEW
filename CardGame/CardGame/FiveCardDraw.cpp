@@ -97,6 +97,13 @@ int FiveCardDraw::before_turn(Player &player)
 						break;
 					}
 					else {
+						for (int j = 0; j < to_remove.size(); ++j) {
+							if (number - 1 == to_remove[j]) {
+								cout << "Invalid index: " << number << endl;
+								input = invalid_string;
+								break;
+							}
+						}
 						to_remove.push_back(number - 1);
 					}
 				}
