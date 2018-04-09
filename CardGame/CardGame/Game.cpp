@@ -14,6 +14,9 @@
 #include "Deck.h"
 #include "Parse.h"
 
+#include <fstream>
+using namespace std;
+
 const vector<string> game_string = { "FiveCardDraw", "fivecarddraw" };
 
 //Initialize game_ptr for use
@@ -94,6 +97,35 @@ shared_ptr<Player> Game::find_player(const string player)
 		}
 	}
 	return ptr;
+}
+
+void Game::remove_player(const string name)
+{
+	cout << "Finding: " << name << endl;
+	shared_ptr<Player> player = find_player(name);
+	if (player) {
+		ofstream ofs(name);
+		if (ofs.is_open()) {
+			ofs << *player;
+		}
+		ofs.close();
+		for (auto i = ptr_vector.begin(); i != ptr_vector.end(); ++i) {
+			shared_ptr<Player> compare = *i;
+			if (*player.get() == *compare.get()) {
+				cout << "Bye " << name << "!" << endl;
+				ptr_vector.erase(i);
+				break;
+			}
+		}
+	}
+	else {
+		cout << "Invalid name: " << name << endl;
+	}
+}
+
+shared_ptr<Player> Game::last_player()
+{
+	return ptr_vector[0];
 }
 
 size_t Game::player_size()

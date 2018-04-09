@@ -22,6 +22,8 @@ public:
 	static void stop_game();
 	void add_player(const string player);
 	shared_ptr<Player> find_player(const string player);
+	void remove_player(const string name);
+	shared_ptr<Player> last_player();
 	size_t player_size();
 
 	//Pure virtual methods

@@ -231,6 +231,9 @@ int FiveCardDraw::after_round()
 	draw_deck.deck.insert(draw_deck.deck.end(), discard_deck.deck.begin(), discard_deck.deck.end());
 	discard_deck = Deck();
 
+	cout << endl;
+	cout << endl;
+
 	try {
 		players_leave();
 		players_join();
@@ -289,26 +292,7 @@ void FiveCardDraw::players_leave()
 		istringstream iss(input);
 
 		while (iss >> name) {
-			cout << "Finding: " << name << endl;
-			shared_ptr<Player> player = find_player(name);
-			if (player) {
-				ofstream ofs(name);
-				if (ofs.is_open()) {
-					ofs << *player;
-				}
-				ofs.close();
-				for (auto i = ptr_vector.begin(); i != ptr_vector.end(); ++i) {
-					shared_ptr<Player> compare = *i;
-					if (*player.get() == *compare.get()) {
-						cout << "Bye " << name << "!" << endl;
-						ptr_vector.erase(i);
-						break;
-					}
-				}
-			}
-			else {
-				cout << "Invalid name: " << name << endl;
-			}
+			remove_player(name);
 		}
 	}
 }

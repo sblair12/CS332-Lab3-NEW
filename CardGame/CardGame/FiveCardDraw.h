@@ -26,7 +26,9 @@ protected:
 	size_t dealer_index;
 	Deck discard_deck;
 	void print_rankings();
+	//Ask players if they want to leave
 	void players_leave();
+	//Ask players if they want to join
 	void players_join();
 };
 
