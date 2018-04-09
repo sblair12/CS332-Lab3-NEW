@@ -97,6 +97,13 @@ int FiveCardDraw::before_turn(Player &player)
 						break;
 					}
 					else {
+						for (int j = 0; j < to_remove.size(); ++j) {
+							if (number - 1 == to_remove[j]) {
+								cout << "Invalid index: " << number << endl;
+								input = invalid_string;
+								break;
+							}
+						}
 						to_remove.push_back(number - 1);
 					}
 				}
@@ -233,10 +240,10 @@ void FiveCardDraw::print_rankings()
 
 bool poker_rank_ptr(const shared_ptr<Player>&p1, const shared_ptr<Player>&p2)
 {
-	if (p1) {
+	if (!p1) {
 		return false;
 	}
-	if (p2) {
+	if (!p2) {
 		return true;
 	}
 	return poker_rank(p1->hand, p2->hand);
