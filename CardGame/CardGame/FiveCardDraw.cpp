@@ -215,15 +215,18 @@ int FiveCardDraw::after_round()
 
 void FiveCardDraw::print_rankings()
 {
+	for (int i = 0; i < ptr_vector.size(); ++i) {
+		rankHand(ptr_vector[i]->hand);
+	}
 	vector<shared_ptr<Player>> ptr_temp = ptr_vector;
 	sort(ptr_temp.begin(), ptr_temp.end(), poker_rank_ptr);
 	ptr_temp[0]->wins++;
-	cout << ptr_temp[0]->name << "\t" << "Wins: " << ptr_temp[0]->wins << "Losses: " << ptr_temp[0]->losses << endl;
+	cout << ptr_temp[0]->name << "\t" << "Wins: " << ptr_temp[0]->wins << " Losses: " << ptr_temp[0]->losses << endl;
 	cout << ptr_temp[0]->hand << "\t" << poker_text[ptr_temp[0]->hand.get_poker()] << endl;
 
 	for (int i = 1; i < ptr_temp.size(); ++i) {
 		ptr_temp[i]->losses++;
-		cout << ptr_temp[i]->name << "\t" << "Wins: " << ptr_temp[i]->wins << "Losses: " << ptr_temp[i]->losses << endl;
+		cout << ptr_temp[i]->name << "\t" << "Wins: " << ptr_temp[i]->wins << " Losses: " << ptr_temp[i]->losses << endl;
 		cout << ptr_temp[i]->hand << "\t" << poker_text[ptr_temp[i]->hand.get_poker()] << endl;
 	}
 }

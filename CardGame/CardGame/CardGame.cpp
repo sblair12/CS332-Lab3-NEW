@@ -51,6 +51,7 @@ int main(int argc, char * argv[])
 		}
 		game_ptr->before_round();
 		game_ptr->round();
+		game_ptr->after_round();
 	}
 	catch (int i) {
 		cout << "Exception caught: " << i << endl;
