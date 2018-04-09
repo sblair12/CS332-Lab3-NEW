@@ -1,7 +1,10 @@
 // Hand.h
 //
-// Author- Shane Blair sblair@wustl.edu - March 19, 2018
+// Authors:
+// Shane Blair	sblair@wustl.edu
+// Steven Lee	lee.steven@wustl.edu
 //
+// April 5, 2018
 // Purpose- Definitions for a "Hand" class
 #pragma once
 

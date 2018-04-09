@@ -1,6 +1,10 @@
 // Parse.h
 //
-// Author- Shane Blair sblair@wustl.edu - February 1, 2018
+// Author:
+// Shane Blair	sblair@wustl.edu
+// Steven Lee	lee.steven@wustl.edu
+//
+// April 5, 2018
 //
 // Purpose- Definitions for "Card" file parsing functions, which can:
 // parse valid card definition strings in a hand line into Card structs,

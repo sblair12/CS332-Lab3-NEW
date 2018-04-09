@@ -1,6 +1,10 @@
 // Card.cpp
 //
-// Author- Shane Blair sblair@wustl.edu - February 20, 2018
+// Author:
+// Shane Blair	sblair@wustl.edu
+// Steven Lee	lee.steven@wustl.edu
+//
+// April 5, 2018
 //
 // Purpose- Declarations for for a "Card" struct, which holds a rank and a suit 
 // from a typical 52 card Poker deck, and functions related to Card comparison

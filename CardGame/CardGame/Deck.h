@@ -1,6 +1,10 @@
 // Deck.h
 //
-// Author- Shane Blair sblair@wustl.edu - March 17, 2018
+// Authors:
+// Shane Blair	sblair@wustl.edu
+// Steven Lee	lee.steven@wustl.edu
+//
+// April 5, 2018
 //
 // Purpose- Definitions for a "Deck" class
 #pragma once
