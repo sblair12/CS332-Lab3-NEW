@@ -129,3 +129,5 @@ Produced:
 		Please give valid card indices, from 1 to 5
 		...
 }
+
+two of the smae cards in hand
