@@ -162,8 +162,6 @@ int FiveCardDraw::after_turn(Player &player)
 int FiveCardDraw::before_round()
 {
 	draw_deck.shuffle();
-	cout << draw_deck << endl;
-	cout << draw_deck.size() << endl;
 	int card_count = 0;
 	size_t index = (dealer_index + 1) % ptr_vector.size();
 	while (card_count < 5) {
@@ -226,23 +224,12 @@ int FiveCardDraw::after_round()
 		for (int index = ptr_vector[i]->hand.size() - 1; index >= 0 && index < ptr_vector[i]->hand.size(); --index) {
 			Card card = ptr_vector[i]->hand.remove_card(index);
 			draw_deck.add_card(card);
-			cout << "Discarded card: " << card << endl;
 		}
-		cout << "Discarded hand: " << endl;
-		cout << ptr_vector[i]->hand << endl;
 	}
 
-	cout << "Draw Deck 1: " << endl;
-	cout << draw_deck << endl;
-	cout << "Discard Deck 1: " << endl;
-	cout << discard_deck << endl;
 	//Take cards from discard deck and throw them into the draw deck
 	draw_deck.deck.insert(draw_deck.deck.end(), discard_deck.deck.begin(), discard_deck.deck.end());
 	discard_deck = Deck();
-	cout << "Draw Deck 2" << endl;
-	cout << draw_deck << endl;
-	cout << "Discard Deck 1: " << endl;
-	cout << discard_deck << endl;
 
 	//Ask users if they want to leave
 	string input;
