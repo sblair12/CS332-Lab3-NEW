@@ -39,8 +39,8 @@ COMMAND LINE Trials:
 "CardGame"
 Produces: 
 		Usage: cardgame <game_name> <player1> <player2> ...
-					Run this program with one argument for a game name and 2 or more arguments for player names
-					(ex: cardgame fivecarddraw billybob Mao)
+				Run this program with one argument for a game name and 2 or more arguments for player names
+				(ex: cardgame fivecarddraw billybob Mao)
 }
 
 2. {
@@ -48,7 +48,7 @@ Produces:
 "CardGame" fivecarddraw
 Produces:
 		Usage: cardgame <game_name> <player1> <player2> ...
-                Run this program with one argument for a game name and 2 or more arguments for player names
+				Run this program with one argument for a game name and 2 or more arguments for player names
                 (ex: cardgame fivecarddraw billybob Mao)
 
 }
@@ -57,7 +57,7 @@ Produces:
 
 "CardGame" fivecarddraw Shane
 Produces:
-Usage: CardGame <game_name> <player1> <player2> ...
+		Usage: CardGame <game_name> <player1> <player2> ...
                 Run this program with one argument for a game name and 2 or more arguments for player names
                 (ex: CardGame fivecarddraw billybob Mao)
 }
