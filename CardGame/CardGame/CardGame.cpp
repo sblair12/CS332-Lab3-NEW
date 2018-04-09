@@ -57,8 +57,10 @@ int main(int argc, char * argv[])
 		cout << endl;
 		cout << endl;
 		cout << "Not enough Players, ending game..." << endl;
-		cout << "Saving progress for last player" << endl;
-		game_ptr->remove_player(game_ptr->last_player()->name);
+		if (game_ptr->player_size() != 0) {
+			cout << "Saving progress for last player" << endl;
+			game_ptr->remove_player(game_ptr->last_player()->name);
+		}
 		game_ptr->stop_game();
 		cout << "Game ended!" << endl;
 	}

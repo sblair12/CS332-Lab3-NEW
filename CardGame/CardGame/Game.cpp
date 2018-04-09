@@ -86,10 +86,10 @@ void Game::add_player(const string player)
 	shared_ptr<Player> player_ptr = make_shared<Player>(player_name);
 	ptr_vector.push_back(player_ptr);
 	if (player_ptr->computer) {
-		cout << "Added: " << player_name << " (Computer)\tto the game" << endl;
+		cout << "Added: " << player_name << "\t(Computer)" << endl;
 	}
 	else {
-		cout << "Added: " << player << "\t\tto the game" << endl;
+		cout << "Added: " << player << endl;
 	}
 }
 

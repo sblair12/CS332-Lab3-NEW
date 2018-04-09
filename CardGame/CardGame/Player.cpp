@@ -17,15 +17,15 @@ using namespace std;
 
 Player::Player(char * file_name)
 {
-	name = file_name;
 	wins = 0;
 	losses = 0;
-	ifstream ifs(name);
 	char last_char = file_name[strlen(file_name) - 1];
 	if (last_char == '*') {
 		computer = true;
 		file_name[strlen(file_name) - 1] = 0;
 	}
+	name = file_name;
+	ifstream ifs(name);
 
 	if (ifs.is_open()) {
 		string line_1, player_string;

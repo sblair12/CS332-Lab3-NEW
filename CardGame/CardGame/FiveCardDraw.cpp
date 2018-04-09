@@ -155,7 +155,6 @@ int FiveCardDraw::turn(Player &player)
 int FiveCardDraw::after_turn(Player &player)
 {
 	cout << player.name << "\t" << player.hand << endl;
-	cout << endl;
 	return 0;
 }
 
@@ -217,6 +216,7 @@ int FiveCardDraw::round()
 
 int FiveCardDraw::after_round()
 {
+	cout << endl;
 	print_rankings();
 
 	//Take cards from hands and throw them into the draw deck
@@ -242,7 +242,9 @@ int FiveCardDraw::after_round()
 		throw i;
 	}
 
-	dealer_index = (dealer_index + 1) % ptr_vector.size();
+	if (ptr_vector.size() != 0) {
+		dealer_index = (dealer_index + 1) % ptr_vector.size();
+	}
 	return 0;
 }
 
@@ -254,12 +256,25 @@ void FiveCardDraw::print_rankings()
 	vector<shared_ptr<Player>> ptr_temp = ptr_vector;
 	sort(ptr_temp.begin(), ptr_temp.end(), poker_rank_ptr);
 	ptr_temp[0]->wins++;
-	cout << ptr_temp[0]->name << "\t" << "Wins: " << ptr_temp[0]->wins << " Losses: " << ptr_temp[0]->losses << endl;
+	if (ptr_temp[0]->computer) {
+		cout << ptr_temp[0]->name << "\t(Computer)" << endl;
+	}
+	else {
+		cout << ptr_temp[0]->name << endl;
+	}
+	cout << "Wins:\t" << ptr_temp[0]->wins << " Losses: " << ptr_temp[0]->losses << endl;
 	cout << ptr_temp[0]->hand << "\t" << poker_text[ptr_temp[0]->hand.get_poker()] << endl;
 
 	for (int i = 1; i < ptr_temp.size(); ++i) {
+		cout << endl;
 		ptr_temp[i]->losses++;
-		cout << ptr_temp[i]->name << "\t" << "Wins: " << ptr_temp[i]->wins << " Losses: " << ptr_temp[i]->losses << endl;
+		if (ptr_temp[i]->computer) {
+			cout << ptr_temp[i]->name << "\t(Computer)" << endl; 
+		}
+		else {
+			cout << ptr_temp[i]->name << endl;
+		}
+		cout << "Wins:\t" << ptr_temp[i]->wins << " Losses: " << ptr_temp[i]->losses << endl;
 		cout << ptr_temp[i]->hand << "\t" << poker_text[ptr_temp[i]->hand.get_poker()] << endl;
 	}
 }
