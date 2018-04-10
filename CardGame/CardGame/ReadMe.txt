@@ -564,3 +564,195 @@ EXTRA CREDIT:
 Note: A computer Player can become a normal, user-driven Player if the computer leaves and the user takes the computer's name.
 This is intended behavior.
 
+The computer is called by specifying a name with an '*' after it. A computer Player is separated from a normal Player only by
+a bool member variable in the Player struct. If an '*' is detected in the name given, then this bool is set to true. The bool
+determines whether user input is taken in during that Player's before and after turn. If it is true, then logic is used to 
+determine the computer Player's choices. What choices this computer will take is based off of the functionality given
+in the assignment instructions. 
+
+Computer card discard logic is done in two separate methods, one to determine the number of cards to discard, and the other to
+determine which cards to discard. The rank of the hand is used, followed by going through different cases of 
+finding where the most significant card is in the hand that is held. Once this is determined, the number of cards and position
+of the cards to be discarded is returned back to the main function to be processed in the same way that any user input would
+also be processed. 
+
+1. { 
+"CardGame fivecarddraw shane joel* steve*"
+		Added: shane
+		Added: joel     (Computer)
+		Added: steve    (Computer)
+
+
+		joel    10C     JC      QS      KD      KS
+
+
+		How many cards to discard?
+		3       *Computer*
+
+		Discarding QS JC 10C
+
+
+		steve   10H     JD      JH      QD      AS
+
+
+		How many cards to discard?
+		3       *Computer*
+
+		Discarding AS QD 10H
+
+
+		shane   2S      6H      7S      8D      AD
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		4
+
+		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
+		Please give valid card indices, from 1 to 5
+		1 2 3 4
+		Discarding 8D 7S 6H 2S
+
+
+		joel    4H      9H      QH      KD      KS
+		steve   7C      8H      JD      JH      AC
+		shane   4C      5C      8S      QC      AD
+
+		joel    (Computer)
+		Wins:   1 Losses: 0
+		4H      9H      QH      KD      KS              One Pair
+
+		steve   (Computer)
+		Wins:   0 Losses: 1
+		7C      8H      JD      JH      AC              One Pair
+
+		shane
+		Wins:   0 Losses: 1
+		4C      5C      8S      QC      AD              High Card
+
+
+		Does any Player want to leave? (Y/n)
+		n
+		Do any new Players want to join? (Y/n)
+		n
+
+
+		steve   3H      3S      6D      9D      9H
+
+
+		How many cards to discard?
+		1       *Computer*
+
+		Discarding 6D
+
+
+		shane   4C      5S      7D      7H      JC
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		2
+
+		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
+		Please give valid card indices, from 1 to 5
+		1 2
+		Discarding 5S 4C
+
+
+		joel    2C      4S      8D      8H      QD
+
+
+		How many cards to discard?
+		3       *Computer*
+
+		Discarding QD 4S 2C
+
+
+		steve   3H      3S      9D      9H      JH
+		shane   7C      7D      7H      JC      JD
+		joel    2D      2H      8D      8H      AC
+
+		shane
+		Wins:   1 Losses: 1
+		7C      7D      7H      JC      JD              Full House
+
+		steve   (Computer)
+		Wins:   0 Losses: 2
+		3H      3S      9D      9H      JH              Two Pairs
+
+		joel    (Computer)
+		Wins:   1 Losses: 1
+		2D      2H      8D      8H      AC              Two Pairs
+
+
+		Does any Player want to leave? (Y/n)
+		n
+		Do any new Players want to join? (Y/n)
+		n
+
+
+		shane   2C      5H      9H      10D     AD
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		3
+
+		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
+		Please give valid card indices, from 1 to 5
+		1 2 3
+		Discarding 9H 5H 2C
+
+
+		joel    4C      5C      6H      9D      QH
+
+
+		How many cards to discard?
+		3       *Computer*
+
+		Discarding 6H 5C 4C
+
+
+		steve   3C      6C      7S      JH      KH
+
+
+		How many cards to discard?
+		3       *Computer*
+
+		Discarding 7S 6C 3C
+
+
+		shane   2H      8S      10D     QS      AD
+		joel    9D      9S      JC      QH      KC
+		steve   7C      7D      10C     JH      KH
+
+		joel    (Computer)
+		Wins:   2 Losses: 1
+		9D      9S      JC      QH      KC              One Pair
+
+		steve   (Computer)
+		Wins:   0 Losses: 3
+		7C      7D      10C     JH      KH              One Pair
+
+		shane
+		Wins:   1 Losses: 2
+		2H      8S      10D     QS      AD              High Card
+
+
+		Does any Player want to leave? (Y/n)
+		Y
+		Which Players would like to leave? (separate names with spaces, ex: joe bob billybob)
+		shane joel steve
+		Finding: shane
+		Bye shane!
+		Finding: joel
+		Bye joel!
+		Finding: steve
+		Bye steve!
+		Do any new Players want to join? (Y/n)
+		n
+
+
+		Not enough Players, ending game...
+		Game ended!
+}
