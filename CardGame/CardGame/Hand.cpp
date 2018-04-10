@@ -107,7 +107,7 @@ int Hand::max_rank() const
 
 Card Hand::operator[](size_t index)
 {
-	if (index >= hand.size() || index < 1) {
+	if (index >= hand.size() || index < 0) {
 		int i = out_of_bounds;
 		throw i;
 	}

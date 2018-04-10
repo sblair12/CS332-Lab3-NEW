@@ -62,7 +62,7 @@ int FiveCardDraw::before_turn(Player &player)
 	int number_discarded;
 
 	if (player.computer) {
-		number_discarded = computer_number_discarded();
+		number_discarded = computer_number_discarded(player);
 	}
 	else {
 		//Get number of cards to discard
@@ -88,7 +88,7 @@ int FiveCardDraw::before_turn(Player &player)
 			cout << "No cards will be discarded" << endl;
 		}
 		else {
-			vector<size_t> computer_remove = computer_discard();
+			vector<size_t> computer_remove = computer_discard(player);
 			remove_cards(computer_remove, player);
 		}
 	}
@@ -388,14 +388,101 @@ void FiveCardDraw::players_join()
 
 int FiveCardDraw::computer_number_discarded(Player p)
 {
+	int number_discarded;
 	rankHand(p.hand);
-	if (p.hand.get_poker == straight_flush || p.hand.get_poker)
-	return 0;
+	if (p.hand.get_poker() == straight_flush || p.hand.get_poker() == full_house || p.hand.get_poker() == straight || p.hand.get_poker() == flush_rank) {
+		number_discarded = 0;
+	}
+	else if (p.hand.get_poker() == four_kind || p.hand.get_poker() == two_pair) {
+		number_discarded = 1;
+	}
+	else if (p.hand.get_poker() == three_kind) {
+		number_discarded = 2;
+	}
+	else if (p.hand.get_poker() == one_pair) {
+		number_discarded = 3;
+	}
+	else if (p.hand.get_poker() == high_card) {
+		if (p.hand[4].rank == ACE) {
+			number_discarded = 4;
+		}
+		else {
+			number_discarded = 3;
+		}
+	}
+	cout << number_discarded << "\t*Computer*" << endl;
+	return number_discarded;
 }
 
 vector<size_t> FiveCardDraw::computer_discard(Player p)
 {
-	return vector<size_t>();
+	vector<size_t> to_remove;
+	rankHand(p.hand);
+	if (p.hand.get_poker() == straight_flush || p.hand.get_poker() == full_house || p.hand.get_poker() == straight || p.hand.get_poker() == flush_rank) {
+		to_remove = {};
+	}
+	else if (p.hand.get_poker() == four_kind || p.hand.get_poker() == two_pair) {
+		if (p.hand.get_poker() == four_kind) {
+			if (p.hand[0].rank == p.hand[1].rank) {
+				to_remove = { 4 };
+			}
+			else {
+				to_remove = { 0 };
+			}
+		}
+		else {
+			//Unmatched card on the right
+			if (p.hand[0].rank == p.hand[1].rank && p.hand[2].rank == p.hand[3].rank) {
+				to_remove = { 4 };
+			}
+			//Unmatched card on the left
+			else if (p.hand[1].rank == p.hand[2].rank && p.hand[3].rank == p.hand[4].rank) {
+				to_remove = { 0 };
+			}
+			//Unmatched card in the center
+			else if (p.hand[0].rank == p.hand[1].rank && p.hand[3].rank == p.hand[4].rank) {
+				to_remove = { 2 };
+			}
+		}
+	}
+	else if (p.hand.get_poker() == three_kind) {
+		//Three of a kind on the left
+		if (p.hand[0].rank == p.hand[1].rank && p.hand[1].rank == p.hand[2].rank) {
+			to_remove = { 3, 4 };
+		}
+		//Three of a kind in the middle
+		else if (p.hand[1].rank == p.hand[2].rank && p.hand[2].rank == p.hand[3].rank) {
+			to_remove = { 0, 4 };
+		}
+		//Three of a kind on the right
+		else if (p.hand[2].rank == p.hand[3].rank && p.hand[3].rank == p.hand[4].rank) {
+			to_remove = { 0, 1 };
+		}
+	}
+	else if (p.hand.get_poker() == one_pair) {
+		if (p.hand[0].rank == p.hand[1].rank) {
+			to_remove = { 2, 3, 4 };
+		}
+		else if (p.hand[1].rank == p.hand[2].rank) {
+			to_remove = { 0, 3, 4 };
+		}
+		else if (p.hand[2].rank == p.hand[3].rank) {
+			to_remove = { 0, 1, 4 };
+		}
+		else if (p.hand[3].rank == p.hand[4].rank) {
+			to_remove = { 0, 1, 2 };
+		}
+	}
+	else if (p.hand.get_poker() == high_card) {
+		if (p.hand[4].rank == ACE) {
+			to_remove = { 0, 1, 2, 3 };
+		}
+		else {
+			to_remove = { 0, 1, 2 };
+		}
+
+	}
+	return to_remove;
 }
 
 bool poker_rank_ptr(const shared_ptr<Player>&p1, const shared_ptr<Player>&p2)
