@@ -10,7 +10,7 @@
 
 #include "stdafx.h"
 #include "Hand.h"
-#include "CardDeck.h"
+#include "CardGame.h"
 #include "Parse.h"
 
 #include <string>
