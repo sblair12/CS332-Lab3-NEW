@@ -576,32 +576,127 @@ finding where the most significant card is in the hand that is held. Once this i
 of the cards to be discarded is returned back to the main function to be processed in the same way that any user input would
 also be processed. 
 
+Computer leaving logic is done using an unsigned int member variable that is initialized at "1". If the computer player is the
+lowest scorer, then this variable is set to "0". If they are the highest, it is set to "2". Then, when determining who leaves
+the game, computer stay chances are assigned (90% for the highest scorer, 10% for the lowest scorer, 50% chance otherwise) and
+this chance is evaluated against an unsigned int generated with rand() % 100 to give a range of 0-100. If the computer chance is
+higher than the generated random, then it leaves. Once all computer players have been evaluated, the user-driven players can 
+decide if they want to leave or not.
+
 1. { 
-"CardGame fivecarddraw shane joel* steve*"
+"CardGame fivecarddraw shane joel* steve* hotep"
 		Added: shane
 		Added: joel     (Computer)
 		Added: steve    (Computer)
+		Added: hotep
 
 
-		joel    10C     JC      QS      KD      KS
-
-
-		How many cards to discard?
-		3       *Computer*
-
-		Discarding QS JC 10C
-
-
-		steve   10H     JD      JH      QD      AS
+		joel    4C      5D      7S      10C     KS
 
 
 		How many cards to discard?
 		3       *Computer*
 
-		Discarding AS QD 10H
+		Discarding 7S 5D 4C
 
 
-		shane   2S      6H      7S      8D      AD
+		steve   4D      8D      JD      QC      AH
+
+
+		How many cards to discard?
+		4       *Computer*
+
+		Discarding QC JD 8D 4D
+
+
+		hotep   5H      7H      10D     KC      AC
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		3
+
+		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
+		Please give valid card indices, from 1 to 5
+		3 4 5
+		Discarding AC KC 10D
+
+
+		shane   3C      8S      9C      10S     JC
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		2
+
+		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
+		Please give valid card indices, from 1 to 5
+		1 4
+		Discarding 10S 3C
+
+
+		joel    6S      7C      9D      10C     KS
+		steve   5S      6C      JS      KD      AH
+		hotep   2D      5C      5H      7H      KH
+		shane   2S      8S      9C      9S      JC
+
+		shane
+		Wins:   1 Losses: 0
+		2S      8S      9C      9S      JC              One Pair
+
+		hotep
+		Wins:   0 Losses: 1
+		2D      5C      5H      7H      KH              One Pair
+
+		steve   (Computer)
+		Wins:   0 Losses: 1
+		5S      6C      JS      KD      AH              High Card
+
+		joel    (Computer)
+		Wins:   0 Losses: 1
+		6S      7C      9D      10C     KS              High Card
+
+
+		Computer "joel" has decided to leave
+		Finding: joel
+		Bye joel!
+		Does any Player want to leave? (Y/n)
+		Y
+		Which Players would like to leave? (separate names with spaces, ex: joe bob billybob)
+		steve
+		Finding: steve
+		Bye steve!
+		Do any new Players want to join? (Y/n)
+		Y
+		Which Players would like to join? (separate names with spaces, ex: mao dan stevebob)
+		yaoming* rock*
+		Adding: yaoming*
+		Added: yaoming  (Computer)
+		Hi yaoming*!
+		Adding: rock*
+		Added: rock     (Computer)
+		Hi rock*!
+
+
+		yaoming 2C      3S      6C      9H      QD
+
+
+		How many cards to discard?
+		3       *Computer*
+
+		Discarding 6C 3S 2C
+
+
+		rock    2D      3D      9C      9S      JH
+
+
+		How many cards to discard?
+		3       *Computer*
+
+		Discarding JH 3D 2D
+
+
+		shane   4D      6S      9D      JS      KC
 
 
 		How many cards to discard?
@@ -610,43 +705,207 @@ also be processed.
 
 		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
 		Please give valid card indices, from 1 to 5
-		1 2 3 4
-		Discarding 8D 7S 6H 2S
+		1 2 4 5
+		Discarding KC JS 6S 4D
 
 
-		joel    4H      9H      QH      KD      KS
-		steve   7C      8H      JD      JH      AC
-		shane   4C      5C      8S      QC      AD
+		hotep   4H      4S      8C      8D      KS
 
-		joel    (Computer)
-		Wins:   1 Losses: 0
-		4H      9H      QH      KD      KS              One Pair
 
-		steve   (Computer)
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		1
+
+		What card to discard? (indices 1-5)
+		Please give valid card indices, from 1 to 5
+		5
+		Discarding KS
+
+
+		yaoming 2S      6D      9H      QD      QS
+		rock    4C      7S      9C      9S      QC
+		shane   6H      7C      7H      9D      AD
+		hotep   4H      4S      8C      8D      JC
+
+		hotep
+		Wins:   1 Losses: 1
+		4H      4S      8C      8D      JC              Two Pairs
+
+		yaoming (Computer)
 		Wins:   0 Losses: 1
-		7C      8H      JD      JH      AC              One Pair
+		2S      6D      9H      QD      QS              One Pair
+
+		rock    (Computer)
+		Wins:   0 Losses: 1
+		4C      7S      9C      9S      QC              One Pair
 
 		shane
-		Wins:   0 Losses: 1
-		4C      5C      8S      QC      AD              High Card
+		Wins:   1 Losses: 1
+		6H      7C      7H      9D      AD              One Pair
 
 
+		Computer "yaoming" has decided to leave
+		Finding: yaoming
+		Bye yaoming!
 		Does any Player want to leave? (Y/n)
 		n
 		Do any new Players want to join? (Y/n)
 		n
 
 
-		steve   3H      3S      6D      9D      9H
+		shane   2D      5D      5H      6H      AH
 
 
 		How many cards to discard?
-		1       *Computer*
+		Please give a VALID number of cards to discard, from 0 to 5
+		5
 
-		Discarding 6D
+		Discarding all cards
+		Discarding AH 6H 5H 5D 2D
 
 
-		shane   4C      5S      7D      7H      JC
+		hotep   5C      5S      JC      JS      AC
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		1
+
+		What card to discard? (indices 1-5)
+		Please give valid card indices, from 1 to 5
+		5
+		Discarding AC
+
+
+		rock    3C      3D      4S      8S      QC
+
+
+		How many cards to discard?
+		3       *Computer*
+
+		Discarding QC 8S 4S
+
+
+		shane   4D      9D      9H      10S     KS
+		hotep   5C      5S      6S      JC      JS
+		rock    2S      3C      3D      10H     KH
+
+		hotep
+		Wins:   2 Losses: 1
+		5C      5S      6S      JC      JS              Two Pairs
+
+		shane
+		Wins:   1 Losses: 2
+		4D      9D      9H      10S     KS              One Pair
+
+		rock    (Computer)
+		Wins:   0 Losses: 2
+		2S      3C      3D      10H     KH              One Pair
+
+
+		Computer "rock" has decided to leave
+		Finding: rock
+		Bye rock!
+		Does any Player want to leave? (Y/n)
+		Y
+		Which Players would like to leave? (separate names with spaces, ex: joe bob billybob)
+		shane
+		Finding: shane
+		Bye shane!
+		Do any new Players want to join? (Y/n)
+		n
+
+
+		Not enough Players, ending game...
+		Saving progress for last player
+		Finding: hotep
+		Bye hotep!
+		Game ended!
+}
+
+2. {
+"CardGame fivecarddraw shane joel* steve* hotep*""
+		Added: shane
+		Added: joel     (Computer)
+		Added: steve    (Computer)
+		Added: hotep    (Computer)
+
+
+		joel    6H      8S      10S     JD      AC
+
+
+		How many cards to discard?
+		4       *Computer*
+
+		Discarding JD 10S 8S 6H
+
+
+		steve   3D      6D      7D      8C      QC
+
+
+		How many cards to discard?
+		3       *Computer*
+
+		Discarding 7D 6D 3D
+
+
+		hotep   3C      3H      4S      7H      JH
+
+
+		How many cards to discard?
+		3       *Computer*
+
+		Discarding JH 7H 4S
+
+
+		shane   2C      3S      4D      7C      JS
+
+
+		How many cards to discard?
+		Please give a VALID number of cards to discard, from 0 to 5
+		2
+
+		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
+		Please give valid card indices, from 1 to 5
+		4 5
+		Discarding JS 7C
+
+
+		joel    2H      5S      8H      QD      AC
+		steve   7S      8C      9H      9S      QC
+		hotep   3C      3H      8D      KH      AD
+		shane   2C      3S      4D      5C      5D
+
+		steve   (Computer)
+		Wins:   1 Losses: 1
+		7S      8C      9H      9S      QC              One Pair
+
+		shane
+		Wins:   1 Losses: 3
+		2C      3S      4D      5C      5D              One Pair
+
+		hotep   (Computer)
+		Wins:   2 Losses: 2
+		3C      3H      8D      KH      AD              One Pair
+
+		joel    (Computer)
+		Wins:   0 Losses: 2
+		2H      5S      8H      QD      AC              High Card
+
+
+		Computer "joel" has decided to leave
+		Finding: joel
+		Bye joel!
+		Computer "hotep" has decided to leave
+		Finding: hotep
+		Bye hotep!
+		Does any Player want to leave? (Y/n)
+		n
+		Do any new Players want to join? (Y/n)
+		n
+
+
+		shane   4H      5D      JH      JS      QD
 
 
 		How many cards to discard?
@@ -656,103 +915,42 @@ also be processed.
 		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
 		Please give valid card indices, from 1 to 5
 		1 2
-		Discarding 5S 4C
+		Discarding 5D 4H
 
 
-		joel    2C      4S      8D      8H      QD
+		steve   4C      9S      JD      KS      AH
 
 
 		How many cards to discard?
-		3       *Computer*
+		4       *Computer*
 
-		Discarding QD 4S 2C
+		Discarding KS JD 9S 4C
 
 
-		steve   3H      3S      9D      9H      JH
-		shane   7C      7D      7H      JC      JD
-		joel    2D      2H      8D      8H      AC
+		shane   3C      JH      JS      QD      AC
+		steve   5C      6D      7S      9H      AH
 
 		shane
-		Wins:   1 Losses: 1
-		7C      7D      7H      JC      JD              Full House
+		Wins:   2 Losses: 3
+		3C      JH      JS      QD      AC              One Pair
 
 		steve   (Computer)
-		Wins:   0 Losses: 2
-		3H      3S      9D      9H      JH              Two Pairs
-
-		joel    (Computer)
-		Wins:   1 Losses: 1
-		2D      2H      8D      8H      AC              Two Pairs
-
-
-		Does any Player want to leave? (Y/n)
-		n
-		Do any new Players want to join? (Y/n)
-		n
-
-
-		shane   2C      5H      9H      10D     AD
-
-
-		How many cards to discard?
-		Please give a VALID number of cards to discard, from 0 to 5
-		3
-
-		Which cards to discard? (indices 1-5, separate choices by spaces, ex: 1 2 4)
-		Please give valid card indices, from 1 to 5
-		1 2 3
-		Discarding 9H 5H 2C
-
-
-		joel    4C      5C      6H      9D      QH
-
-
-		How many cards to discard?
-		3       *Computer*
-
-		Discarding 6H 5C 4C
-
-
-		steve   3C      6C      7S      JH      KH
-
-
-		How many cards to discard?
-		3       *Computer*
-
-		Discarding 7S 6C 3C
-
-
-		shane   2H      8S      10D     QS      AD
-		joel    9D      9S      JC      QH      KC
-		steve   7C      7D      10C     JH      KH
-
-		joel    (Computer)
-		Wins:   2 Losses: 1
-		9D      9S      JC      QH      KC              One Pair
-
-		steve   (Computer)
-		Wins:   0 Losses: 3
-		7C      7D      10C     JH      KH              One Pair
-
-		shane
 		Wins:   1 Losses: 2
-		2H      8S      10D     QS      AD              High Card
+		5C      6D      7S      9H      AH              High Card
 
 
-		Does any Player want to leave? (Y/n)
-		Y
-		Which Players would like to leave? (separate names with spaces, ex: joe bob billybob)
-		shane joel steve
-		Finding: shane
-		Bye shane!
-		Finding: joel
-		Bye joel!
+		Computer "steve" has decided to leave
 		Finding: steve
 		Bye steve!
+		Does any Player want to leave? (Y/n)
+		n
 		Do any new Players want to join? (Y/n)
 		n
 
 
 		Not enough Players, ending game...
+		Saving progress for last player
+		Finding: shane
+		Bye shane!
 		Game ended!
 }

@@ -19,6 +19,7 @@ struct Player {
 	unsigned int wins;
 	unsigned int losses;
 	bool computer = false;
+	unsigned int position = 1;
 
 	Player(char *);
 	bool operator==(const Player&) const;

@@ -281,6 +281,7 @@ void FiveCardDraw::print_rankings()
 	ptr_temp[0]->wins++;
 	if (ptr_temp[0]->computer) {
 		cout << ptr_temp[0]->name << "\t(Computer)" << endl;
+		ptr_temp[0]->position = 2;
 	}
 	else {
 		cout << ptr_temp[0]->name << endl;
@@ -289,6 +290,9 @@ void FiveCardDraw::print_rankings()
 	cout << ptr_temp[0]->hand << "\t" << poker_text[ptr_temp[0]->hand.get_poker()] << endl;
 
 	for (int i = 1; i < ptr_temp.size(); ++i) {
+		if (i == ptr_temp.size() - 1) {
+			ptr_temp[i]->position = 0;
+		}
 		cout << endl;
 		ptr_temp[i]->losses++;
 		if (ptr_temp[i]->computer) {
@@ -307,6 +311,28 @@ void FiveCardDraw::players_leave()
 	string input;
 	bool leave = false;
 	bool correct = false;
+
+	//Determine if computers leave or not
+	for (int i = 0; i < ptr_vector.size(); ++i) {
+		if (ptr_vector[i]->computer) {
+			unsigned int random_number = rand() % 100;
+			unsigned int chance;
+			if (ptr_vector[i]->position == 2) {
+				chance = 90;
+			}
+			else if (ptr_vector[i]->position == 0) {
+				chance = 10;
+			}
+			else {
+				chance = 50;
+			}
+			if (random_number > chance) {
+				cout << "Computer \"" << ptr_vector[i]->name << "\" has decided to leave" << endl;
+				remove_player(ptr_vector[i]->name);
+			}
+		}
+	}
+
 	while (input.length() != 1 || !correct) {
 		cout << "Does any Player want to leave? (Y/n)" << endl;
 		getline(cin, input);
