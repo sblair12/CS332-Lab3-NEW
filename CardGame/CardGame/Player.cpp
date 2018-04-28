@@ -19,6 +19,7 @@ Player::Player(char * file_name)
 {
 	wins = 0;
 	losses = 0;
+	chips = 20;
 	char last_char = file_name[strlen(file_name) - 1];
 	if (last_char == '*') {
 		computer = true;
@@ -39,6 +40,8 @@ Player::Player(char * file_name)
 				wins = player_score;
 				iss >> player_score;
 				losses = player_score;
+				iss >> player_score;
+				chips = player_score;
 			}
 		}
 	}
@@ -51,6 +54,6 @@ bool Player::operator==(const Player &p) const
 
 ostream & operator<<(ostream &o, const Player &p)
 {
-	o << p.name << " " << p.wins << " " << p.losses;
+	o << p.name << " " << p.wins << " " << p.losses << " " << p.chips;
 	return o;
 }

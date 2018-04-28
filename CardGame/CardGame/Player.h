@@ -18,6 +18,7 @@ struct Player {
 	Hand hand;
 	unsigned int wins;
 	unsigned int losses;
+	unsigned int chips;
 	bool computer = false;
 	unsigned int position = 1;
 
