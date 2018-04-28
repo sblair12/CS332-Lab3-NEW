@@ -73,15 +73,22 @@ Card Hand::remove_card(size_t index)
 	return card;
 }
 
-string Hand::as_string() const
+string Hand::as_string(vector<bool> format) const
 {
 	string output = "";
 	ostringstream oss;
+	unsigned int count = 0;
 
 	for (Card card : hand) {
-		int rank = card.rank;
-		int suit = card.suit;
-		oss << rank_text[rank] << suit_text[suit] << "\t";
+		if (format[count]) {
+			int rank = card.rank;
+			int suit = card.suit;
+			oss << rank_text[rank] << suit_text[suit] << "\t";
+		}
+		else {
+			oss << "*" << "\t";
+		}
+		count++;
 	}
 
 	output += oss.str();
@@ -127,6 +134,11 @@ bool Hand::operator==(const Hand &h) const
 	return true;
 }
 
+bool Hand::operator!=(const Hand &h) const
+{
+	return !(*this == h);
+}
+
 //Lexical less than
 bool Hand::operator<(const Hand &h) const
 {
@@ -157,7 +169,17 @@ bool Hand::operator>(const Hand &h) const
 
 ostream & operator<<(ostream &o, const Hand &h)
 {
-	o << h.as_string();
+	string output = "";
+	ostringstream oss;
+
+	for (Card card : h.hand) {
+		int rank = card.rank;
+		int suit = card.suit;
+		oss << rank_text[rank] << suit_text[suit] << "\t";
+	}
+
+	output += oss.str();
+	o << output;
 	return o;
 }
 

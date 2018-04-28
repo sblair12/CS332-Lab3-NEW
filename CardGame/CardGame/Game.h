@@ -29,10 +29,11 @@ public:
 	//Ask players if they want to join
 	void players_join();
 	void ante();
-	void bet();
 	void chips_empty();
 
 	//Pure virtual methods
+	virtual void bet() = 0;
+	virtual void print_rankings() = 0;
 	virtual int before_turn(Player &) = 0;
 	virtual int turn(Player &) = 0;
 	virtual int after_turn(Player &) = 0;
@@ -45,7 +46,6 @@ protected:
 	Deck draw_deck;
 	vector<shared_ptr<Player>> ptr_vector;
 	unsigned int pot = 0;
-	void print_rankings();
 };
 
 bool poker_rank_ptr(const shared_ptr<Player>&, const shared_ptr<Player>&);

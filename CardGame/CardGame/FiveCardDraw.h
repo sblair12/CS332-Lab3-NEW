@@ -16,6 +16,8 @@ class FiveCardDraw : public Game {
 public:
 	FiveCardDraw();
 	void remove_cards(vector<size_t> &, Player &);
+	virtual void bet();
+	virtual void print_rankings();
 	virtual int before_turn(Player &);
 	virtual int turn(Player &);
 	virtual int after_turn(Player &);

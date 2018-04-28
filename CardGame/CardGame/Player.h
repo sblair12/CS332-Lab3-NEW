@@ -16,6 +16,7 @@ using namespace std;
 struct Player {
 	string name;
 	Hand hand;
+
 	unsigned int wins;
 	unsigned int losses;
 	unsigned int chips;

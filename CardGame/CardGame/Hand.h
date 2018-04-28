@@ -23,6 +23,7 @@ private:
 	vector<Card> hand;
 	int hash;
 	int to_poker;
+	friend class SevenCardStud;
 public:
 	Hand();
 	//Copy constructor
@@ -35,13 +36,14 @@ public:
 	int get_poker() const;
 	void set_poker(int);
 	Card remove_card(size_t);
-	string as_string() const;
+	string as_string(vector<bool> format) const;
 
 	Hand & operator=(const Hand&);
 	int max_rank() const;
 
 	Card operator[](size_t);
 	bool operator==(const Hand&) const;
+	bool operator!=(const Hand&) const;
 	bool operator<(const Hand&) const;
 	bool operator>(const Hand&) const;
 	friend ostream & operator<<(ostream &, const Hand &);

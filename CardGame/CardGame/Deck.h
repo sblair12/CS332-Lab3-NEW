@@ -21,6 +21,7 @@ private:
 	vector<Card> deck;
 	friend class Hand;
 	friend class FiveCardDraw;
+	friend class SevenCardStud;
 public:
 	Deck();
 	Deck(char *);
