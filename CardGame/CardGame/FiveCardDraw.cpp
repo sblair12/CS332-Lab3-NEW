@@ -177,7 +177,7 @@ int FiveCardDraw::turn(Player &player)
 
 int FiveCardDraw::after_turn(Player &player)
 {
-	cout << player.name << "\t" << player.hand << endl;
+	//deprecated by betting rounds
 	return 0;
 }
 
@@ -185,8 +185,7 @@ int FiveCardDraw::before_round()
 {
 	cout << endl;
 	ante();
-	cout << endl;
-	bet();
+
 	draw_deck.shuffle();
 	int card_count = 0;
 	size_t index = (dealer_index + 1) % ptr_vector.size();
@@ -202,6 +201,9 @@ int FiveCardDraw::before_round()
 			++card_count;
 		}
 	}
+
+	cout << endl;
+	bet();
 
 	for (size_t i = 0; i < ptr_vector.size(); ++i) {
 		try {
@@ -229,15 +231,7 @@ int FiveCardDraw::round()
 	}
 	cout << endl;
 	cout << endl;
-	for (size_t i = 0; i < ptr_vector.size(); ++i) {
-		try {
-			after_turn(*ptr_vector[index].get());
-			index = (index + 1) % ptr_vector.size();
-		}
-		catch (int i) {
-			throw i;
-		}
-	}
+	bet();
 	return 0;
 }
 
@@ -290,8 +284,7 @@ void FiveCardDraw::print_rankings()
 	else {
 		cout << ptr_temp[0]->name << endl;
 	}
-	cout << "Wins:\t" << ptr_temp[0]->wins << " Losses: " << ptr_temp[0]->losses << endl;
-	cout << "Chips: " << ptr_temp[0]->chips << endl;
+	cout << "Wins:\t" << ptr_temp[0]->wins << "\tLosses: " << ptr_temp[0]->losses << "\tChips: " << ptr_temp[0]->chips << endl;
 	cout << ptr_temp[0]->hand << "\t" << poker_text[ptr_temp[0]->hand.get_poker()] << endl;
 
 	for (int i = 1; i < ptr_temp.size(); ++i) {
@@ -306,8 +299,7 @@ void FiveCardDraw::print_rankings()
 		else {
 			cout << ptr_temp[i]->name << endl;
 		}
-		cout << "Wins:\t" << ptr_temp[i]->wins << " Losses: " << ptr_temp[i]->losses << endl;
-		cout << "Chips: " << ptr_temp[i]->chips << endl;
+		cout << "Wins:\t" << ptr_temp[i]->wins << "\tLosses: " << ptr_temp[i]->losses << "\tChips: " << ptr_temp[i]->chips << endl;
 		cout << ptr_temp[i]->hand << "\t" << poker_text[ptr_temp[i]->hand.get_poker()] << endl;
 	}
 }

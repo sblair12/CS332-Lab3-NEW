@@ -272,11 +272,13 @@ void Game::bet()
 		unsigned int bet_amount = 0;
 		unsigned int correct_length;
 
-		cout << ptr_vector[bet_index]->name << "\tChips: " << ptr_vector[bet_index]->chips << "\t";
-		cout << endl;
+		cout << ptr_vector[bet_index]->name << "\t" << ptr_vector[bet_index]->hand << endl;
+		cout << "Chips: " << ptr_vector[bet_index]->chips << "\t";
 
 		while (substring != "check" && substring != "bet" && substring != "fold" && substring != "raise" && substring != "call") {
 			if (current_bet == 0) {
+				cout << endl;
+				cout << endl;
 				cout << "Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)" << endl;
 				getline(cin, input);
 				if (input == "check") {
@@ -312,6 +314,7 @@ void Game::bet()
 			}
 			else {
 				cout << "Current Bet: " << current_bet << endl;
+				cout << endl;
 				cout << "Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2 chips)" << endl;
 				getline(cin, input);
 				if (input == "fold") {
@@ -364,6 +367,8 @@ void Game::bet()
 				ptr_vector[i]->chips = 0;
 			}
 		}
+		cout << ptr_vector[i]->name << " " << ptr_vector[i]->chips << endl;
+		cout << "Pot: " << pot << endl;
 	}
 
 	//Reset fold bools to false
