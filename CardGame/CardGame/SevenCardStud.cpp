@@ -9,7 +9,6 @@
 // Purpose- Declarations for the SevenCardStud class derived from "Game" publically
 
 #include "stdafx.h"
-#include "FiveCardDraw.h"
 #include "SevenCardStud.h"
 
 SevenCardStud::SevenCardStud()
