@@ -183,7 +183,10 @@ int FiveCardDraw::after_turn(Player &player)
 
 int FiveCardDraw::before_round()
 {
+	cout << endl;
 	ante();
+	cout << endl;
+	bet();
 	draw_deck.shuffle();
 	int card_count = 0;
 	size_t index = (dealer_index + 1) % ptr_vector.size();

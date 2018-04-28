@@ -49,6 +49,7 @@ void Game::start_game(const string game)
 		for (int i = 0; i < game_string.size(); ++i) {
 			if (game == game_string[i]) {
 				game_ptr = make_shared<FiveCardDraw>();
+				cout << "Playing: " << game_string[i] << endl;
 			}
 		}
 		if (!game_ptr) {
@@ -249,8 +250,124 @@ void Game::players_join()
 
 void Game::ante()
 {
+	pot = 0;
+	cout << "Ante:" << endl;
 	for (int i = 0; i < ptr_vector.size(); ++i) {
+		cout << ante_amount << " chip(s) from " << ptr_vector[i]->name << endl;
 		ptr_vector[i]->chips = ptr_vector[i]->chips - ante_amount;
 		pot = pot + ante_amount;
+	}
+	cout << "Pot: " << pot << endl;
+}
+
+void Game::bet()
+{
+	size_t bet_index = (dealer_index + 1) % ptr_vector.size();
+	unsigned int bet_round = 0;
+	unsigned int current_bet = 0;
+
+	while (bet_round < ptr_vector.size()) {
+		string input;
+		string substring = "invalid";
+		unsigned int bet_amount = 0;
+		unsigned int correct_length;
+
+		cout << ptr_vector[bet_index]->name << "\tChips: " << ptr_vector[bet_index]->chips << "\t";
+		cout << endl;
+
+		while (substring != "check" && substring != "bet" && substring != "fold" && substring != "raise" && substring != "call") {
+			if (current_bet == 0) {
+				cout << "Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)" << endl;
+				getline(cin, input);
+				if (input == "check") {
+					substring = input;
+				}
+				if (input.substr(0, 3) == "bet") {
+					correct_length = 5;
+					substring = "bet";
+					bet_round = 0;
+					if (input.length() == 5) {
+						istringstream bet_stream(input.substr(4, 5));
+						bet_stream >> bet_amount;
+						if (bet_amount <= 2 && bet_amount > 0 && bet_amount <= ptr_vector[bet_index]->chips) {
+							current_bet = bet_amount;
+						}
+						else if (bet_amount > ptr_vector[bet_index]->chips) {
+							cout << "Invalid bet: You only have " << ptr_vector[bet_index]->chips << " chip(s) to bet" << endl;
+							substring = "invalid";
+						}
+						else {
+							cout << "Invalid bet: The maximum bet is 2 chips" << endl;
+							substring = "invalid";
+						}
+					}
+					else {
+						cout << "Invalid bet: Bet must be either 1 or 2 chips" << endl;
+						substring = "invalid";
+					}
+				}
+				if (input == "raise") {
+					substring = "invalid";
+				}
+			}
+			else {
+				cout << "Current Bet: " << current_bet << endl;
+				cout << "Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2 chips)" << endl;
+				getline(cin, input);
+				if (input == "fold") {
+					ptr_vector[bet_index]->fold = true;
+					substring = input;
+				}
+				if (input == "call") {
+					substring = input;
+				}
+				if (input.substr(0, 5) == "raise") {
+					correct_length = 7;
+					substring = "raise";
+					bet_round = 0;
+					if (input.length() == 7) {
+						istringstream bet_stream(input.substr(6, 7));
+						bet_stream >> bet_amount;
+						if (bet_amount <= 2 && bet_amount > 0 && ((bet_amount + current_bet) <= ptr_vector[bet_index]->chips)) {
+							current_bet += bet_amount;
+						}
+						else if ((bet_amount + current_bet) > ptr_vector[bet_index]->chips) {
+							cout << "Invalid raise: You only have " << ptr_vector[bet_index]->chips << " chip(s) to bet" << endl;
+							substring = "invalid";
+						}
+						else {
+							cout << "Invalid raise: The maximum raise is 2 chips" << endl;
+							substring = "invalid";
+						}
+					}
+					else {
+						cout << "Invalid raise: Raise must be 1 or 2 chips" << endl;
+						substring = "invalid";
+					}
+				}
+			}
+		}
+		bet_index = (bet_index + 1) % ptr_vector.size();
+		bet_round++;
+		cout << endl;
+	}
+
+	//Take bets from players not folded
+	for (int i = 0; i < ptr_vector.size(); ++i) {
+		if (ptr_vector[i]->fold == false) {
+			if (current_bet <= ptr_vector[i]->chips) {
+				ptr_vector[i]->chips = ptr_vector[i]->chips - current_bet;
+				pot = pot + current_bet;
+			}
+			else {
+				pot = pot + ptr_vector[i]->chips;
+				ptr_vector[i]->chips = 0;
+			}
+		}
+	}
+
+	//Reset fold bools to false
+	for (int i = 0; i < ptr_vector.size(); ++i) {
+		ptr_vector[i]->fold = false;
 	}
 }

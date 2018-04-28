@@ -20,6 +20,7 @@ struct Player {
 	unsigned int losses;
 	unsigned int chips;
 	bool computer = false;
+	bool fold;
 	unsigned int position = 1;
 
 	Player(char *);

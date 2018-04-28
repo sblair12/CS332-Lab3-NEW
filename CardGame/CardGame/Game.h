@@ -29,6 +29,7 @@ public:
 	//Ask players if they want to join
 	void players_join();
 	void ante();
+	void bet();
 
 	//Pure virtual methods
 	virtual int before_turn(Player &) = 0;

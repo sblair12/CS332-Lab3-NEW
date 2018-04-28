@@ -20,6 +20,7 @@ Player::Player(char * file_name)
 	wins = 0;
 	losses = 0;
 	chips = 20;
+	fold = false;
 	char last_char = file_name[strlen(file_name) - 1];
 	if (last_char == '*') {
 		computer = true;
