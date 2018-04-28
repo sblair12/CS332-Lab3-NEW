@@ -46,23 +46,64 @@ int main(int argc, char * argv[])
 	try {
 		Game::start_game(game_name);
 		shared_ptr<Game> game_ptr = Game::instance();
-		for (int i = player_name_index; i < argc; ++i) {
-			game_ptr->add_player(argv[i]);
+		while (game_ptr) {
+			for (int i = player_name_index; i < argc; ++i) {
+				game_ptr->add_player(argv[i]);
+			}
+			while (game_ptr->player_size() >= 2) {
+				game_ptr->before_round();
+				game_ptr->round();
+				game_ptr->after_round();
+			}
+			cout << endl;
+			cout << endl;
+			cout << "Not enough Players, ending game..." << endl;
+			if (game_ptr->player_size() != 0) {
+				cout << "Saving progress for last player" << endl;
+				game_ptr->remove_player(game_ptr->last_player()->name);
+			}
+			game_ptr->stop_game();
+			game_ptr.reset();
+			cout << "Game ended!" << endl;
+			cout << endl;
+
+			string input;
+			bool another = false;
+			bool correct = false;
+			while (input.length() != 1 || !correct) {
+				cout << "Would you like to play another game?" << endl;
+				getline(cin, input);
+				if (input.length() == 1) {
+					if (input[0] == 'Y' || input[0] == 'y') {
+						another = true;
+						correct = true;
+					}
+					if (input[0] == 'N' || input[0] == 'n') {
+						another = false;
+						correct = true;
+					}
+				}
+			}
+
+			if (another) {
+				correct = false;
+				while (!correct) {
+					cout << "What game would you like to play?" << endl;
+					getline(cin, input);
+					try {
+						Game::start_game(input);
+						correct = true;
+					}
+					catch (...) {
+						cout << "Invalid game: " << input << endl;
+					}
+				}
+				game_ptr = Game::instance();
+			}
+			else {
+				cout << "Bye bye" << endl;
+			}
 		}
-		while (game_ptr->player_size() >= 2) {
-			game_ptr->before_round();
-			game_ptr->round();
-			game_ptr->after_round();
-		}
-		cout << endl;
-		cout << endl;
-		cout << "Not enough Players, ending game..." << endl;
-		if (game_ptr->player_size() != 0) {
-			cout << "Saving progress for last player" << endl;
-			game_ptr->remove_player(game_ptr->last_player()->name);
-		}
-		game_ptr->stop_game();
-		cout << "Game ended!" << endl;
 	}
 	catch (int i) {
 		cout << "Exception caught: " << i << endl;
