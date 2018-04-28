@@ -30,6 +30,7 @@ public:
 	void players_join();
 	void ante();
 	void bet();
+	void chips_empty();
 
 	//Pure virtual methods
 	virtual int before_turn(Player &) = 0;

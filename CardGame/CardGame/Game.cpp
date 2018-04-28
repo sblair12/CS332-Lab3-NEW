@@ -88,11 +88,16 @@ void Game::add_player(const string player)
 	strcpy_s(player_name, player.length() + 1, player.c_str());
 	shared_ptr<Player> player_ptr = make_shared<Player>(player_name);
 	ptr_vector.push_back(player_ptr);
-	if (player_ptr->computer) {
-		cout << "Added: " << player_name << "\t(Computer)" << endl;
+	if (player_ptr->chips == 0) {
+		chips_empty();
 	}
-	else {
-		cout << "Added: " << player << "\tChips: " << player_ptr->chips << endl;
+	if (player_ptr->chips > 0) {
+		if (player_ptr->computer) {
+			cout << "Added: " << player_name << "\t(Computer)" << endl;
+		}
+		else {
+			cout << "Added: " << player << "\tChips: " << player_ptr->chips << endl;
+		}
 	}
 }
 
@@ -275,7 +280,7 @@ void Game::bet()
 		cout << ptr_vector[bet_index]->name << "\t" << ptr_vector[bet_index]->hand << endl;
 		cout << "Chips: " << ptr_vector[bet_index]->chips << "\t";
 
-		if (ptr_vector[bet_index]->fold == false) {
+		if (ptr_vector[bet_index]->fold == false && ptr_vector[bet_index]->chips > 0) {
 			while (substring != "check" && substring != "bet" && substring != "fold" && substring != "raise" && substring != "call") {
 				if (current_bet == 0) {
 					cout << endl;
@@ -288,13 +293,13 @@ void Game::bet()
 					if (input.substr(0, 3) == "bet") {
 						correct_length = 5;
 						substring = "bet";
-						bet_round = 0;
 						if (input.length() == 5) {
 							istringstream bet_stream(input.substr(4, 5));
 							bet_stream >> bet_amount;
 							if (bet_amount <= 2 && bet_amount > 0 && bet_amount <= ptr_vector[bet_index]->chips) {
 								current_bet = bet_amount;
 								ptr_vector[bet_index]->bet = current_bet;
+								bet_round = 0;
 							}
 							else if (bet_amount > ptr_vector[bet_index]->chips) {
 								cout << "Invalid bet: You only have " << ptr_vector[bet_index]->chips << " chip(s) to bet" << endl;
@@ -329,13 +334,13 @@ void Game::bet()
 					if (input.substr(0, 5) == "raise") {
 						correct_length = 7;
 						substring = "raise";
-						bet_round = 0;
 						if (input.length() == 7) {
 							istringstream bet_stream(input.substr(6, 7));
 							bet_stream >> bet_amount;
 							if (bet_amount <= 2 && bet_amount > 0 && ((bet_amount + current_bet) <= ptr_vector[bet_index]->chips)) {
 								current_bet += bet_amount;
 								ptr_vector[bet_index]->bet = current_bet;
+								bet_round = 0;
 							}
 							else if ((bet_amount + current_bet) > ptr_vector[bet_index]->chips) {
 								cout << "Invalid raise: You only have " << ptr_vector[bet_index]->chips << " chip(s) to bet" << endl;
@@ -353,6 +358,10 @@ void Game::bet()
 					}
 				}
 			}
+		}
+		else if (ptr_vector[bet_index]->chips == 0) {
+			cout << endl;
+			cout << "Already all in" << endl;
 		}
 		else {
 			cout << endl;
@@ -382,5 +391,39 @@ void Game::bet()
 		cout << ptr_vector[i]->name << " " << ptr_vector[i]->chips << endl;
 		cout << "Pot: " << pot << endl;
 		ptr_vector[i]->bet = 0;
+	}
+}
+
+void Game::chips_empty()
+{
+	for (int i = 0; i < ptr_vector.size(); ++i) {
+		if (ptr_vector[i]->chips == 0) {
+			cout << ptr_vector[i]->name << ", you are out of chips." << endl;
+
+			string input;
+			bool buy = false;
+			bool correct = false;
+			while (input.length() != 1 || !correct) {
+				cout << "Would you like to buy back in (Y/n)?" << endl;
+				getline(cin, input);
+				if (input.length() == 1) {
+					if (input[0] == 'Y' || input[0] == 'y') {
+						buy = true;
+						correct = true;
+					}
+					if (input[0] == 'N' || input[0] == 'n') {
+						buy = false;
+						correct = true;
+					}
+				}
+			}
+
+			if (buy) {
+				ptr_vector[i]->chips = 20;
+			}
+			else {
+				remove_player(ptr_vector[i]->name);
+			}
+		}
 	}
 }

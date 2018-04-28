@@ -264,6 +264,8 @@ int FiveCardDraw::after_round()
 	cout << endl;
 	cout << endl;
 
+	chips_empty();
+
 	try {
 		players_leave();
 		players_join();
