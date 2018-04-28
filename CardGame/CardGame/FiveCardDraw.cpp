@@ -189,7 +189,7 @@ int FiveCardDraw::before_round()
 	draw_deck.shuffle();
 	int card_count = 0;
 	size_t index = (dealer_index + 1) % ptr_vector.size();
-	while (card_count < 5) {
+	while (card_count < max_discard) {
 		if (draw_deck.size() == 0) {
 			cout << "No more cards in the deck" << endl;
 			int i = deck_out_of_cards;
