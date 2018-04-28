@@ -23,13 +23,9 @@ public:
 	virtual int round();
 	virtual int after_round();
 protected:
-	size_t dealer_index;
 	Deck discard_deck;
 	void print_rankings();
 	//Ask players if they want to leave
-	void players_leave();
-	//Ask players if they want to join
-	void players_join();
 	int computer_number_discarded(Player);
 	vector<size_t> computer_discard(Player);
 };

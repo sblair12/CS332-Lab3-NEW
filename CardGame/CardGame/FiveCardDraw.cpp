@@ -183,6 +183,7 @@ int FiveCardDraw::after_turn(Player &player)
 
 int FiveCardDraw::before_round()
 {
+	ante();
 	draw_deck.shuffle();
 	int card_count = 0;
 	size_t index = (dealer_index + 1) % ptr_vector.size();
@@ -287,6 +288,7 @@ void FiveCardDraw::print_rankings()
 		cout << ptr_temp[0]->name << endl;
 	}
 	cout << "Wins:\t" << ptr_temp[0]->wins << " Losses: " << ptr_temp[0]->losses << endl;
+	cout << "Chips: " << ptr_temp[0]->chips << endl;
 	cout << ptr_temp[0]->hand << "\t" << poker_text[ptr_temp[0]->hand.get_poker()] << endl;
 
 	for (int i = 1; i < ptr_temp.size(); ++i) {
@@ -302,113 +304,8 @@ void FiveCardDraw::print_rankings()
 			cout << ptr_temp[i]->name << endl;
 		}
 		cout << "Wins:\t" << ptr_temp[i]->wins << " Losses: " << ptr_temp[i]->losses << endl;
+		cout << "Chips: " << ptr_temp[i]->chips << endl;
 		cout << ptr_temp[i]->hand << "\t" << poker_text[ptr_temp[i]->hand.get_poker()] << endl;
-	}
-}
-
-void FiveCardDraw::players_leave()
-{
-	string input;
-	bool leave = false;
-	bool correct = false;
-
-	//Determine if computers leave or not
-	for (int i = 0; i < ptr_vector.size(); ++i) {
-		if (ptr_vector[i]->computer) {
-			unsigned int random_number = rand() % 100;
-			unsigned int chance;
-			if (ptr_vector[i]->position == 2) {
-				chance = 90;
-			}
-			else if (ptr_vector[i]->position == 0) {
-				chance = 10;
-			}
-			else {
-				chance = 50;
-			}
-			if (random_number > chance) {
-				cout << "Computer \"" << ptr_vector[i]->name << "\" has decided to leave" << endl;
-				remove_player(ptr_vector[i]->name);
-			}
-		}
-	}
-
-	while (input.length() != 1 || !correct) {
-		cout << "Does any Player want to leave? (Y/n)" << endl;
-		getline(cin, input);
-		if (input.length() == 1) {
-			if (input[0] == 'Y' || input[0] == 'y') {
-				leave = true;
-				correct = true;
-			}
-			if (input[0] == 'N' || input[0] == 'n') {
-				leave = false;
-				correct = true;
-			}
-		}
-	}
-
-	if (leave) {
-		//Get names of Players who are leaving
-		cout << "Which Players would like to leave? (separate names with spaces, ex: joe bob billybob)" << endl;
-		getline(cin, input);
-		string name;
-		istringstream iss(input);
-
-		while (iss >> name) {
-			remove_player(name);
-		}
-	}
-}
-
-void FiveCardDraw::players_join()
-{
-	string input;
-	bool join = false;
-	bool correct = false;
-	while (input.length() != 1 || !correct) {
-		cout << "Do any new Players want to join? (Y/n)" << endl;
-		getline(cin, input);
-		if (input.length() == 1) {
-			if (input[0] == 'Y' || input[0] == 'y') {
-				join = true;
-				correct = true;
-			}
-			if (input[0] == 'N' || input[0] == 'n') {
-				join = false;
-				correct = true;
-			}
-		}
-	}
-
-	if (join) {
-		//Get names of Players who want to join
-		cout << "Which Players would like to join? (separate names with spaces, ex: mao dan stevebob)" << endl;
-		getline(cin, input);
-		string name;
-		istringstream iss(input);
-
-		while (iss >> name) {
-			cout << "Adding: " << name << endl;
-			shared_ptr<Player> player = find_player(name);
-			if (!player) {
-				try{
-					add_player(name);
-					cout << "Hi " << name << "!" << endl;
-				}
-				catch (int i) {
-					if (i == 13) {
-						cout << "Player: " << name << " is already in the game!" << endl;
-					}
-					else {
-						throw i;
-					}
-				}
-			}
-			else {
-				cout << "Invalid name: " << name << endl;
-			}
-		}
 	}
 }
 

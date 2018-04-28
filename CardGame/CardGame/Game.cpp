@@ -15,9 +15,11 @@
 #include "Parse.h"
 
 #include <fstream>
+#include <sstream>
 using namespace std;
 
-const vector<string> game_string = { "FiveCardDraw", "fivecarddraw" };
+const unsigned int ante_amount = 1;
+const vector<string> game_string = { "FiveCardDraw", "fivecarddraw", "SevenCardStud", "sevencardstud" };
 
 //Initialize game_ptr for use
 shared_ptr<Game> Game::game_ptr;
@@ -137,4 +139,118 @@ shared_ptr<Player> Game::last_player()
 size_t Game::player_size()
 {
 	return ptr_vector.size();
+}
+
+void Game::players_leave()
+{
+	string input;
+	bool leave = false;
+	bool correct = false;
+
+	//Determine if computers leave or not
+	for (int i = 0; i < ptr_vector.size(); ++i) {
+		if (ptr_vector[i]->computer) {
+			unsigned int random_number = rand() % 100;
+			unsigned int chance;
+			if (ptr_vector[i]->position == 2) {
+				chance = 90;
+			}
+			else if (ptr_vector[i]->position == 0) {
+				chance = 10;
+			}
+			else {
+				chance = 50;
+			}
+			if (random_number > chance) {
+				cout << "Computer \"" << ptr_vector[i]->name << "\" has decided to leave" << endl;
+				remove_player(ptr_vector[i]->name);
+			}
+		}
+	}
+
+	while (input.length() != 1 || !correct) {
+		cout << "Does any Player want to leave? (Y/n)" << endl;
+		getline(cin, input);
+		if (input.length() == 1) {
+			if (input[0] == 'Y' || input[0] == 'y') {
+				leave = true;
+				correct = true;
+			}
+			if (input[0] == 'N' || input[0] == 'n') {
+				leave = false;
+				correct = true;
+			}
+		}
+	}
+
+	if (leave) {
+		//Get names of Players who are leaving
+		cout << "Which Players would like to leave? (separate names with spaces, ex: joe bob billybob)" << endl;
+		getline(cin, input);
+		string name;
+		istringstream iss(input);
+
+		while (iss >> name) {
+			remove_player(name);
+		}
+	}
+}
+
+void Game::players_join()
+{
+	string input;
+	bool join = false;
+	bool correct = false;
+	while (input.length() != 1 || !correct) {
+		cout << "Do any new Players want to join? (Y/n)" << endl;
+		getline(cin, input);
+		if (input.length() == 1) {
+			if (input[0] == 'Y' || input[0] == 'y') {
+				join = true;
+				correct = true;
+			}
+			if (input[0] == 'N' || input[0] == 'n') {
+				join = false;
+				correct = true;
+			}
+		}
+	}
+
+	if (join) {
+		//Get names of Players who want to join
+		cout << "Which Players would like to join? (separate names with spaces, ex: mao dan stevebob)" << endl;
+		getline(cin, input);
+		string name;
+		istringstream iss(input);
+
+		while (iss >> name) {
+			cout << "Adding: " << name << endl;
+			shared_ptr<Player> player = find_player(name);
+			if (!player) {
+				try {
+					add_player(name);
+					cout << "Hi " << name << "!" << endl;
+				}
+				catch (int i) {
+					if (i == 13) {
+						cout << "Player: " << name << " is already in the game!" << endl;
+					}
+					else {
+						throw i;
+					}
+				}
+			}
+			else {
+				cout << "Invalid name: " << name << endl;
+			}
+		}
+	}
+}
+
+void Game::ante()
+{
+	for (int i = 0; i < ptr_vector.size(); ++i) {
+		ptr_vector[i]->chips = ptr_vector[i]->chips - ante_amount;
+		pot = pot + ante_amount;
+	}
 }

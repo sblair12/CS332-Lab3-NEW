@@ -25,6 +25,10 @@ public:
 	void remove_player(const string name);
 	shared_ptr<Player> last_player();
 	size_t player_size();
+	void players_leave();
+	//Ask players if they want to join
+	void players_join();
+	void ante();
 
 	//Pure virtual methods
 	virtual int before_turn(Player &) = 0;
@@ -34,7 +38,9 @@ public:
 	virtual int round() = 0;
 	virtual int after_round() = 0;
 protected:
+	size_t dealer_index;
 	static shared_ptr<Game> game_ptr;
 	Deck draw_deck;
 	vector<shared_ptr<Player>> ptr_vector;
+	unsigned int pot = 0;
 };
