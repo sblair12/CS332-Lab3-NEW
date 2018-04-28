@@ -19,6 +19,7 @@ struct Player {
 	unsigned int wins;
 	unsigned int losses;
 	unsigned int chips;
+	unsigned int bet;
 	bool computer = false;
 	bool fold;
 	unsigned int position = 1;

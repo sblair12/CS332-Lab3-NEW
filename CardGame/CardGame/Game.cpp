@@ -92,7 +92,7 @@ void Game::add_player(const string player)
 		cout << "Added: " << player_name << "\t(Computer)" << endl;
 	}
 	else {
-		cout << "Added: " << player << endl;
+		cout << "Added: " << player << "\tChips: " << player_ptr->chips << endl;
 	}
 }
 
@@ -254,8 +254,8 @@ void Game::ante()
 	cout << "Ante:" << endl;
 	for (int i = 0; i < ptr_vector.size(); ++i) {
 		cout << ante_amount << " chip(s) from " << ptr_vector[i]->name << endl;
-		ptr_vector[i]->chips = ptr_vector[i]->chips - ante_amount;
-		pot = pot + ante_amount;
+		ptr_vector[i]->chips -= ante_amount;
+		pot += ante_amount;
 	}
 	cout << "Pot: " << pot << endl;
 }
@@ -275,80 +275,88 @@ void Game::bet()
 		cout << ptr_vector[bet_index]->name << "\t" << ptr_vector[bet_index]->hand << endl;
 		cout << "Chips: " << ptr_vector[bet_index]->chips << "\t";
 
-		while (substring != "check" && substring != "bet" && substring != "fold" && substring != "raise" && substring != "call") {
-			if (current_bet == 0) {
-				cout << endl;
-				cout << endl;
-				cout << "Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)" << endl;
-				getline(cin, input);
-				if (input == "check") {
-					substring = input;
-				}
-				if (input.substr(0, 3) == "bet") {
-					correct_length = 5;
-					substring = "bet";
-					bet_round = 0;
-					if (input.length() == 5) {
-						istringstream bet_stream(input.substr(4, 5));
-						bet_stream >> bet_amount;
-						if (bet_amount <= 2 && bet_amount > 0 && bet_amount <= ptr_vector[bet_index]->chips) {
-							current_bet = bet_amount;
-						}
-						else if (bet_amount > ptr_vector[bet_index]->chips) {
-							cout << "Invalid bet: You only have " << ptr_vector[bet_index]->chips << " chip(s) to bet" << endl;
-							substring = "invalid";
+		if (ptr_vector[bet_index]->fold == false) {
+			while (substring != "check" && substring != "bet" && substring != "fold" && substring != "raise" && substring != "call") {
+				if (current_bet == 0) {
+					cout << endl;
+					cout << endl;
+					cout << "Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)" << endl;
+					getline(cin, input);
+					if (input == "check") {
+						substring = input;
+					}
+					if (input.substr(0, 3) == "bet") {
+						correct_length = 5;
+						substring = "bet";
+						bet_round = 0;
+						if (input.length() == 5) {
+							istringstream bet_stream(input.substr(4, 5));
+							bet_stream >> bet_amount;
+							if (bet_amount <= 2 && bet_amount > 0 && bet_amount <= ptr_vector[bet_index]->chips) {
+								current_bet = bet_amount;
+								ptr_vector[bet_index]->bet = current_bet;
+							}
+							else if (bet_amount > ptr_vector[bet_index]->chips) {
+								cout << "Invalid bet: You only have " << ptr_vector[bet_index]->chips << " chip(s) to bet" << endl;
+								substring = "invalid";
+							}
+							else {
+								cout << "Invalid bet: The maximum bet is 2 chips" << endl;
+								substring = "invalid";
+							}
 						}
 						else {
-							cout << "Invalid bet: The maximum bet is 2 chips" << endl;
+							cout << "Invalid bet: Bet must be either 1 or 2 chips" << endl;
 							substring = "invalid";
 						}
 					}
-					else {
-						cout << "Invalid bet: Bet must be either 1 or 2 chips" << endl;
+					if (input == "raise") {
 						substring = "invalid";
 					}
 				}
-				if (input == "raise") {
-					substring = "invalid";
-				}
-			}
-			else {
-				cout << "Current Bet: " << current_bet << endl;
-				cout << endl;
-				cout << "Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2 chips)" << endl;
-				getline(cin, input);
-				if (input == "fold") {
-					ptr_vector[bet_index]->fold = true;
-					substring = input;
-				}
-				if (input == "call") {
-					substring = input;
-				}
-				if (input.substr(0, 5) == "raise") {
-					correct_length = 7;
-					substring = "raise";
-					bet_round = 0;
-					if (input.length() == 7) {
-						istringstream bet_stream(input.substr(6, 7));
-						bet_stream >> bet_amount;
-						if (bet_amount <= 2 && bet_amount > 0 && ((bet_amount + current_bet) <= ptr_vector[bet_index]->chips)) {
-							current_bet += bet_amount;
-						}
-						else if ((bet_amount + current_bet) > ptr_vector[bet_index]->chips) {
-							cout << "Invalid raise: You only have " << ptr_vector[bet_index]->chips << " chip(s) to bet" << endl;
-							substring = "invalid";
+				else {
+					cout << "Current Bet: " << current_bet << endl;
+					cout << endl;
+					cout << "Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2 chips)" << endl;
+					getline(cin, input);
+					if (input == "fold") {
+						ptr_vector[bet_index]->fold = true;
+						substring = input;
+					}
+					if (input == "call") {
+						substring = input;
+					}
+					if (input.substr(0, 5) == "raise") {
+						correct_length = 7;
+						substring = "raise";
+						bet_round = 0;
+						if (input.length() == 7) {
+							istringstream bet_stream(input.substr(6, 7));
+							bet_stream >> bet_amount;
+							if (bet_amount <= 2 && bet_amount > 0 && ((bet_amount + current_bet) <= ptr_vector[bet_index]->chips)) {
+								current_bet += bet_amount;
+								ptr_vector[bet_index]->bet = current_bet;
+							}
+							else if ((bet_amount + current_bet) > ptr_vector[bet_index]->chips) {
+								cout << "Invalid raise: You only have " << ptr_vector[bet_index]->chips << " chip(s) to bet" << endl;
+								substring = "invalid";
+							}
+							else {
+								cout << "Invalid raise: The maximum raise is 2 chips" << endl;
+								substring = "invalid";
+							}
 						}
 						else {
-							cout << "Invalid raise: The maximum raise is 2 chips" << endl;
+							cout << "Invalid raise: Raise must be 1 or 2 chips" << endl;
 							substring = "invalid";
 						}
 					}
-					else {
-						cout << "Invalid raise: Raise must be 1 or 2 chips" << endl;
-						substring = "invalid";
-					}
 				}
 			}
+		}
+		else {
+			cout << endl;
+			cout << "Folded" << endl;
 		}
 		bet_index = (bet_index + 1) % ptr_vector.size();
 		bet_round++;
@@ -359,20 +367,20 @@ void Game::bet()
 	for (int i = 0; i < ptr_vector.size(); ++i) {
 		if (ptr_vector[i]->fold == false) {
 			if (current_bet <= ptr_vector[i]->chips) {
-				ptr_vector[i]->chips = ptr_vector[i]->chips - current_bet;
-				pot = pot + current_bet;
+				ptr_vector[i]->chips -= current_bet;
+				pot += current_bet;
 			}
 			else {
-				pot = pot + ptr_vector[i]->chips;
+				pot += ptr_vector[i]->chips;
 				ptr_vector[i]->chips = 0;
 			}
 		}
+		else {
+			pot += ptr_vector[i]->bet;
+			ptr_vector[i]->chips -= ptr_vector[i]->bet;
+		}
 		cout << ptr_vector[i]->name << " " << ptr_vector[i]->chips << endl;
 		cout << "Pot: " << pot << endl;
-	}
-
-	//Reset fold bools to false
-	for (int i = 0; i < ptr_vector.size(); ++i) {
-		ptr_vector[i]->fold = false;
+		ptr_vector[i]->bet = 0;
 	}
 }

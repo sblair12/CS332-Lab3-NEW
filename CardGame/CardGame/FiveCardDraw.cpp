@@ -207,7 +207,16 @@ int FiveCardDraw::before_round()
 
 	for (size_t i = 0; i < ptr_vector.size(); ++i) {
 		try {
-			before_turn(*ptr_vector[index].get());
+			if (ptr_vector[index]->fold == false) {
+				before_turn(*ptr_vector[index].get());
+			}
+			else {
+				cout << endl;
+				cout << endl;
+				cout << ptr_vector[index]->name << "\t" << "FOLD" << endl;
+				cout << endl;
+				cout << endl;
+			}
 			index = (index + 1) % ptr_vector.size();
 		}
 		catch (int i) {
@@ -277,13 +286,15 @@ void FiveCardDraw::print_rankings()
 	vector<shared_ptr<Player>> ptr_temp = ptr_vector;
 	sort(ptr_temp.begin(), ptr_temp.end(), poker_rank_ptr);
 	ptr_temp[0]->wins++;
+	ptr_temp[0]->chips += pot;
 	if (ptr_temp[0]->computer) {
-		cout << ptr_temp[0]->name << "\t(Computer)" << endl;
+		cout << ptr_temp[0]->name << "\t(Computer)";
 		ptr_temp[0]->position = 2;
 	}
 	else {
-		cout << ptr_temp[0]->name << endl;
+		cout << ptr_temp[0]->name;
 	}
+	cout << "\t won " << pot << " chips!" << endl;
 	cout << "Wins:\t" << ptr_temp[0]->wins << "\tLosses: " << ptr_temp[0]->losses << "\tChips: " << ptr_temp[0]->chips << endl;
 	cout << ptr_temp[0]->hand << "\t" << poker_text[ptr_temp[0]->hand.get_poker()] << endl;
 
@@ -300,7 +311,16 @@ void FiveCardDraw::print_rankings()
 			cout << ptr_temp[i]->name << endl;
 		}
 		cout << "Wins:\t" << ptr_temp[i]->wins << "\tLosses: " << ptr_temp[i]->losses << "\tChips: " << ptr_temp[i]->chips << endl;
-		cout << ptr_temp[i]->hand << "\t" << poker_text[ptr_temp[i]->hand.get_poker()] << endl;
+		if (ptr_temp[i]->fold == false) {
+			cout << ptr_temp[i]->hand << "\t" << poker_text[ptr_temp[i]->hand.get_poker()] << endl;
+		}
+		else {
+			cout << "FOLD" << endl;
+		}
+	}
+	//Reset fold bools to false
+	for (int i = 0; i < ptr_vector.size(); ++i) {
+		ptr_vector[i]->fold = false;
 	}
 }
 
@@ -409,6 +429,12 @@ bool poker_rank_ptr(const shared_ptr<Player>&p1, const shared_ptr<Player>&p2)
 		return false;
 	}
 	if (!p2) {
+		return true;
+	}
+	if (p1->fold) {
+		return false;
+	}
+	if (p2->fold) {
 		return true;
 	}
 	return poker_rank(p1->hand, p2->hand);
