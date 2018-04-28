@@ -24,10 +24,9 @@ public:
 	virtual int after_round();
 protected:
 	Deck discard_deck;
-	void print_rankings();
+
 	//Ask players if they want to leave
 	int computer_number_discarded(Player);
 	vector<size_t> computer_discard(Player);
 };
 
-bool poker_rank_ptr(const shared_ptr<Player>&, const shared_ptr<Player>&);

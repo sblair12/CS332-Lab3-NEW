@@ -280,52 +280,6 @@ int FiveCardDraw::after_round()
 	return 0;
 }
 
-void FiveCardDraw::print_rankings()
-{
-	for (int i = 0; i < ptr_vector.size(); ++i) {
-		rankHand(ptr_vector[i]->hand);
-	}
-	vector<shared_ptr<Player>> ptr_temp = ptr_vector;
-	sort(ptr_temp.begin(), ptr_temp.end(), poker_rank_ptr);
-	ptr_temp[0]->wins++;
-	ptr_temp[0]->chips += pot;
-	if (ptr_temp[0]->computer) {
-		cout << ptr_temp[0]->name << "\t(Computer)";
-		ptr_temp[0]->position = 2;
-	}
-	else {
-		cout << ptr_temp[0]->name;
-	}
-	cout << "\t won " << pot << " chips!" << endl;
-	cout << "Wins:\t" << ptr_temp[0]->wins << "\tLosses: " << ptr_temp[0]->losses << "\tChips: " << ptr_temp[0]->chips << endl;
-	cout << ptr_temp[0]->hand << "\t" << poker_text[ptr_temp[0]->hand.get_poker()] << endl;
-
-	for (int i = 1; i < ptr_temp.size(); ++i) {
-		if (i == ptr_temp.size() - 1) {
-			ptr_temp[i]->position = 0;
-		}
-		cout << endl;
-		ptr_temp[i]->losses++;
-		if (ptr_temp[i]->computer) {
-			cout << ptr_temp[i]->name << "\t(Computer)" << endl; 
-		}
-		else {
-			cout << ptr_temp[i]->name << endl;
-		}
-		cout << "Wins:\t" << ptr_temp[i]->wins << "\tLosses: " << ptr_temp[i]->losses << "\tChips: " << ptr_temp[i]->chips << endl;
-		if (ptr_temp[i]->fold == false) {
-			cout << ptr_temp[i]->hand << "\t" << poker_text[ptr_temp[i]->hand.get_poker()] << endl;
-		}
-		else {
-			cout << "FOLD" << endl;
-		}
-	}
-	//Reset fold bools to false
-	for (int i = 0; i < ptr_vector.size(); ++i) {
-		ptr_vector[i]->fold = false;
-	}
-}
-
 int FiveCardDraw::computer_number_discarded(Player p)
 {
 	int number_discarded;
@@ -423,21 +377,4 @@ vector<size_t> FiveCardDraw::computer_discard(Player p)
 
 	}
 	return to_remove;
-}
-
-bool poker_rank_ptr(const shared_ptr<Player>&p1, const shared_ptr<Player>&p2)
-{
-	if (!p1) {
-		return false;
-	}
-	if (!p2) {
-		return true;
-	}
-	if (p1->fold) {
-		return false;
-	}
-	if (p2->fold) {
-		return true;
-	}
-	return poker_rank(p1->hand, p2->hand);
 }
