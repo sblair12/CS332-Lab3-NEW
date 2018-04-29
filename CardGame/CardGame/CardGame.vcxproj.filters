@@ -29,6 +29,9 @@
     <ClCompile Include="SevenCardStud.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TexasHoldEm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -58,6 +61,9 @@
       <Filter>Headers Files</Filter>
     </ClInclude>
     <ClInclude Include="SevenCardStud.h">
+      <Filter>Headers Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TexasHoldEm.h">
       <Filter>Headers Files</Filter>
     </ClInclude>
   </ItemGroup>

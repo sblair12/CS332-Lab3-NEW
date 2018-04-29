@@ -1,5 +1,7 @@
 // SevenCardStud.h
 //
+// SevenCardStud.h
+//
 // Authors: 
 // Shane Blair	sblair@wustl.edu
 // Steven Lee	lee.steven@wustl.edu
