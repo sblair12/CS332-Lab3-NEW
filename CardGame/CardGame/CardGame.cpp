@@ -71,7 +71,7 @@ int main(int argc, char * argv[])
 			bool another = false;
 			bool correct = false;
 			while (input.length() != 1 || !correct) {
-				cout << "Would you like to play another game?" << endl;
+				cout << "Would you like to play another game? (Y/n)" << endl;
 				getline(cin, input);
 				if (input.length() == 1) {
 					if (input[0] == 'Y' || input[0] == 'y') {
