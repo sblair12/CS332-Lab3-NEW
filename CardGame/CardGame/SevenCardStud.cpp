@@ -188,7 +188,7 @@ void SevenCardStud::print_rankings()
 			sort(to_rank.begin(), to_rank.end());
 			holder.hand = to_rank;
 			rankHand(holder);
-			if (holder.hash > max_hash) {
+			if (holder.hash >= max_hash) {
 				max_hash = holder.get_ranking();
 				max_poker = holder.get_poker();
 				final_hand = holder;
