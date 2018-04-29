@@ -24,6 +24,7 @@ private:
 	int hash;
 	int to_poker;
 	friend class SevenCardStud;
+	friend class TexasHoldEm;
 public:
 	Hand();
 	//Copy constructor

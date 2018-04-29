@@ -51,6 +51,7 @@ void TexasHoldEm::bet()
 			cout << shared_cards[i] << "\t";
 		}
 		cout << endl;
+		cout << endl;
 		cout << ptr_vector[bet_index]->name << "\t" << ptr_vector[bet_index]->hand << endl;
 		cout << "Chips: " << ptr_vector[bet_index]->chips << "\t";
 
@@ -169,6 +170,83 @@ void TexasHoldEm::bet()
 
 void TexasHoldEm::print_rankings()
 {
+	vector<Hand> rank_hands;
+	if (!all_fold) {
+		for (int i = 0; i < ptr_vector.size(); ++i) {
+			Hand pointer = ptr_vector[i]->hand;
+			vector<Card> player_cards = pointer.hand;
+			vector<Card> hold_cards = shared_cards;
+			hold_cards.insert(hold_cards.end(), player_cards.begin(), player_cards.end());
+			Hand ranked = pointer;
+			ranked.hand = hold_cards;
+			Hand holder = ranked;
+			Hand temp = ranked;
+			Hand final_hand;
+			int max_hash = 0;
+			int max_poker = 0;
+
+			do {
+				next_permutation(ranked.hand.begin(), ranked.hand.end());
+				vector<Card> to_rank(ranked.hand.begin(), ranked.hand.begin() + 5);
+				sort(to_rank.begin(), to_rank.end());
+				holder.hand = to_rank;
+				rankHand(holder);
+				if (holder.hash >= max_hash) {
+					max_hash = holder.get_ranking();
+					max_poker = holder.get_poker();
+					final_hand = holder;
+				}
+			} while (ranked != temp);
+			rank_hands.push_back(final_hand);
+			sort(rank_hands.begin(), rank_hands.end(), poker_rank);
+			ptr_vector[i]->hand.set_poker(max_poker);
+			ptr_vector[i]->hand.set_ranking(max_hash);
+//			cout << ptr_vector[i]->name << " Max rank: " << max_hash << endl;
+		}
+	}
+	vector<shared_ptr<Player>> ptr_temp = ptr_vector;
+	sort(ptr_temp.begin(), ptr_temp.end(), poker_rank_ptr);
+	ptr_temp[0]->wins++;
+	ptr_temp[0]->chips += pot;
+	if (ptr_temp[0]->computer) {
+		cout << ptr_temp[0]->name << "\t(Computer)";
+		ptr_temp[0]->position = 2;
+	}
+	else {
+		cout << ptr_temp[0]->name;
+	}
+	cout << "\t won " << pot << " chips!" << endl;
+	cout << "Wins:\t" << ptr_temp[0]->wins << "\tLosses: " << ptr_temp[0]->losses << "\tChips: " << ptr_temp[0]->chips << endl;
+	cout << ptr_temp[0]->hand << endl;
+	if (!all_fold) {
+		cout << rank_hands[0] << "\t" << poker_text[ptr_temp[0]->hand.get_poker()] << endl;
+	}
+
+	for (int i = 1; i < ptr_temp.size(); ++i) {
+		if (i == ptr_temp.size() - 1) {
+			ptr_temp[i]->position = 0;
+		}
+		cout << endl;
+		ptr_temp[i]->losses++;
+		if (ptr_temp[i]->computer) {
+			cout << ptr_temp[i]->name << "\t(Computer)" << endl;
+		}
+		else {
+			cout << ptr_temp[i]->name << endl;
+		}
+		cout << "Wins:\t" << ptr_temp[i]->wins << "\tLosses: " << ptr_temp[i]->losses << "\tChips: " << ptr_temp[i]->chips << endl;
+		if (ptr_temp[i]->fold == false) {
+			cout << ptr_temp[i]->hand << endl;
+			cout << rank_hands[i] << "\t" << poker_text[ptr_temp[i]->hand.get_poker()] << endl;
+		}
+		else {
+			cout << "FOLD" << endl;
+		}
+	}
+	//Reset fold bools to false
+	for (int i = 0; i < ptr_vector.size(); ++i) {
+		ptr_vector[i]->fold = false;
+	}
 }
 
 int TexasHoldEm::before_round()
@@ -199,6 +277,8 @@ int TexasHoldEm::round()
 
 	bet();
 	card_count = 0;
+	cout << endl;
+	cout << "The FLOP" << endl;
 
 	//Second turn (The "Flop", deal 3 cards to the middle)
 	while (card_count < second_deal) {
@@ -214,8 +294,17 @@ int TexasHoldEm::round()
 
 	bet();
 
+
 	//Third and fourth turns (The "Turn" and the "River", one card each to the middle)
 	for (int turn = 3; turn <= 4; turn++) {
+		if (turn == 3) {
+			cout << endl;
+			cout << "The TURN" << endl;
+		}
+		else {
+			cout << endl;
+			cout << "The RIVER" << endl;
+		}
 		if (draw_deck.size() == 0) {
 			cout << "No more cards in the deck" << endl;
 			int i = deck_out_of_cards;

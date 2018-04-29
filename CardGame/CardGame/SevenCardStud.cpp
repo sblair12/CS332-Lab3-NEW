@@ -199,8 +199,6 @@ void SevenCardStud::print_rankings()
 			sort(rank_hands.begin(), rank_hands.end(), poker_rank);
 			ptr_vector[i]->hand.set_poker(max_poker);
 			ptr_vector[i]->hand.set_ranking(max_hash);
-			cout << ptr_vector[i]->name << " Max rank: " << max_hash << endl;
-			//rankHand(ptr_vector[i]->hand);
 		}
 	}
 	vector<shared_ptr<Player>> ptr_temp = ptr_vector;
