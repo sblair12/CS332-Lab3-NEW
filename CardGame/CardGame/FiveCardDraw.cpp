@@ -173,10 +173,9 @@ void FiveCardDraw::bet()
 			pot += ptr_vector[i]->bet;
 			ptr_vector[i]->chips -= ptr_vector[i]->bet;
 		}
-		cout << ptr_vector[i]->name << " " << ptr_vector[i]->chips << endl;
-		cout << "Pot: " << pot << endl;
 		ptr_vector[i]->bet = 0;
 	}
+	cout << "Pot: " << pot << endl;
 }
 
 void FiveCardDraw::print_rankings()
