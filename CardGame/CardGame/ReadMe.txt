@@ -131,5 +131,3 @@ Produced:
 
 }
 
-*when everyone else folds and 1 person bet then person that bet automaticaly wins
-but 1 person betting had to choose between check and bet again before they won
