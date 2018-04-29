@@ -379,13 +379,13 @@ int FiveCardDraw::before_round()
 
 	cout << endl;
 	bet();
-	int fold_count = 0;
+	int play_count = 0;
 	for (size_t i = 0; i < ptr_vector.size(); i++) {
-		if (ptr_vector[i]->fold) {
-			fold_count++;
+		if (!(ptr_vector[i]->fold)) {
+			play_count++;
 		}
 	}
-	if (fold_count == 1) {
+	if (play_count == 1) {
 		all_fold = true;
 	}
 
