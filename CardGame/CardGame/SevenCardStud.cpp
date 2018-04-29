@@ -272,25 +272,37 @@ int SevenCardStud::round()
 
 	cout << endl;
 	bet();
-	index = (dealer_index + 1) % ptr_vector.size();
-	card_count = 0;
-
-	//Second, third, fourth, and fifth turns (deal one card each)
-	for (unsigned int turn = 2; turn <= 5; turn++) {
-		int card_count = 0;
-		while (card_count < middle_deal) {
-			if (draw_deck.size() == 0) {
-				cout << "No more cards in the deck" << endl;
-				int i = deck_out_of_cards;
-				throw i;
-			}
-			ptr_vector[index]->hand << draw_deck;
-			index = (index + 1) % ptr_vector.size();
-			if (index == (dealer_index + 1) % ptr_vector.size()) {
-				++card_count;
-			}
+	int play_count = 0;
+	for (size_t i = 0; i < ptr_vector.size(); i++) {
+		if (!(ptr_vector[i]->fold)) {
+			play_count++;
 		}
-		bet();
+	}
+	if (play_count == 1) {
+		all_fold = true;
+	}
+
+	if (!all_fold) {
+		index = (dealer_index + 1) % ptr_vector.size();
+		card_count = 0;
+
+		//Second, third, fourth, and fifth turns (deal one card each)
+		for (unsigned int turn = 2; turn <= 5; turn++) {
+			int card_count = 0;
+			while (card_count < middle_deal) {
+				if (draw_deck.size() == 0) {
+					cout << "No more cards in the deck" << endl;
+					int i = deck_out_of_cards;
+					throw i;
+				}
+				ptr_vector[index]->hand << draw_deck;
+				index = (index + 1) % ptr_vector.size();
+				if (index == (dealer_index + 1) % ptr_vector.size()) {
+					++card_count;
+				}
+			}
+			bet();
+		}
 	}
 	return 0;
 }
