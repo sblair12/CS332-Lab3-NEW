@@ -129,5 +129,267 @@ Produced:
 
 8. {
 
+"Cardgame fivecarddraw shane steven joel"
+Produced:
+	Playing: fivecarddraw
+	Added: shane    Chips: 20
+	Added: steven   Chips: 20
+	Added: joel     Chips: 20
+
+	Ante:
+	1 chip(s) from shane
+	1 chip(s) from steven
+	1 chip(s) from joel
+	Pot: 3
+
+	steven  2D      4S      5H      6C      KH
+	Chips: 19
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	bet 2
+
+	joel    2S      4D      8C      QC      QD
+	Chips: 19       Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise 2
+
+	shane   3C      5S      8S      10S     AS
+	Chips: 19       Current Bet: 4
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise 2
+
+	steven  2D      4S      5H      6C      KH
+	Chips: 19       Current Bet: 6
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise 2
+
+	joel    2S      4D      8C      QC      QD
+	Chips: 19       Current Bet: 8
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise 2
+
+	shane   3C      5S      8S      10S     AS
+	Chips: 19       Current Bet: 10
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise 2
+
+	steven  2D      4S      5H      6C      KH
+	Chips: 19       Current Bet: 12
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise 2
+
+	joel    2S      4D      8C      QC      QD
+	Chips: 19       Current Bet: 14
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise 2
+
+	shane   3C      5S      8S      10S     AS
+	Chips: 19       Current Bet: 16
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise 2
+
+	steven  2D      4S      5H      6C      KH
+	Chips: 19       Current Bet: 18
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise 1
+
+	joel    2S      4D      8C      QC      QD
+	Chips: 19       Current Bet: 19
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	call
+
+	shane   3C      5S      8S      10S     AS
+	Chips: 19       Current Bet: 19
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	call
+
+	Pot: 60
+
+
+	steven  2D      4S      5H      6C      KH
+
+
+	How many cards to discard?
+	Please give a VALID number of cards to discard, from 0 to 5
+	5
+
+	Discarding all cards
+	Discarding KH 6C 5H 4S 2D
+
+
+	joel    2S      4D      8C      QC      QD
+
+
+	How many cards to discard?
+	Please give a VALID number of cards to discard, from 0 to 5
+	5
+
+	Discarding all cards
+	Discarding QD QC 8C 4D 2S
+
+
+	shane   3C      5S      8S      10S     AS
+
+
+	How many cards to discard?
+	Please give a VALID number of cards to discard, from 0 to 5
+	5
+
+	Discarding all cards
+	Discarding AS 10S 8S 5S 3C
+
+
+	steven  7D      9S      QH      QS      AC
+	Chips: 0
+	Already all in
+
+	joel    3D      7S      9D      10C     AH
+	Chips: 0
+	Already all in
+
+	shane   4H      7C      7H      8D      JH
+	Chips: 0
+	Already all in
+
+	Pot: 60
+
+	steven   won 60 chips!
+	Wins:   1       Losses: 0       Chips: 60
+	7D      9S      QH      QS      AC              One Pair
+
+	shane
+	Wins:   0       Losses: 1       Chips: 0
+	4H      7C      7H      8D      JH              One Pair
+
+	joel
+	Wins:   0       Losses: 1       Chips: 0
+	3D      7S      9D      10C     AH              High Card
+
+
+	joel, you are out of chips.
+	Would you like to buy back in (Y/n)?
+	n
+	Finding: joel
+	Bye joel!
+	shane, you are out of chips.
+	Would you like to buy back in (Y/n)?
+	n
+	Finding: shane
+	Bye shane!
+	Does any Player want to leave? (Y/n)
+	n
+	Do any new Players want to join? (Y/n)
+	n
+
+
+	Not enough Players, ending game...
+	Saving progress for last player
+	Finding: steven
+	Bye steven!
+	Game ended!
+
+	Would you like to play another game? (Y/n)
+	n
+	Bye bye
+
 }
 
+9. {
+
+**checking for valid inputs 
+
+"Cardgame fivecarddraw joel shane steven"
+Produced:
+	Playing: fivecarddraw
+	Added: joel     Chips: 20
+	Added: shane    Chips: 20
+	Added: steven   Chips: 20
+
+	Ante:
+	1 chip(s) from joel
+	1 chip(s) from shane
+	1 chip(s) from steven
+	Pot: 3
+
+	shane   2H      3S      6C      QC      AD
+	Chips: 19
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	1
+
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	2
+
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	3
+
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	=
+
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	bet 2
+
+	steven  3C      4H      9D      JC      JH
+	Chips: 19       Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise -
+	Invalid raise: The maximum raise is 2 chips
+	Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise 0
+	Invalid raise: The maximum raise is 2 chips
+	Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise 10
+	Invalid raise: Raise must be 1 or 2 chips
+	Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise fakjfa;djksf
+	Invalid raise: Raise must be 1 or 2 chips
+	Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise `
+	Invalid raise: The maximum raise is 2 chips
+	Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	 
+	 ...
+}
