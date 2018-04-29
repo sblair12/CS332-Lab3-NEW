@@ -177,7 +177,8 @@ void SevenCardStud::print_rankings()
 		Hand ranked = pointer;
 		Hand holder = ranked;
 		Hand temp = ranked;
-		int max = 0;
+		int max_hash = 0;
+		int max_poker = 0;
 
 		do {
 			next_permutation(ranked.hand.begin(), ranked.hand.end());
@@ -185,12 +186,15 @@ void SevenCardStud::print_rankings()
 			sort(to_rank.begin(), to_rank.end());
 			holder.hand = to_rank;
 			rankHand(holder);
-			if (holder.hash > max) {
-				max = holder.hash;
+			if (holder.hash > max_hash) {
+				max_hash = holder.get_ranking();
+				max_poker = holder.get_poker();
 			}
 		} while (ranked != temp);
-		cout << "Max rank: " << max << endl;
-		//rankHand(ptr_vector[i]->hand);
+		ptr_vector[i]->hand.set_poker(max_poker);
+		ptr_vector[i]->hand.set_ranking(max_hash);
+		cout << ptr_vector[i]->name << " Max rank: " << max_hash << endl;
+		rankHand(ptr_vector[i]->hand);
 	}
 	vector<shared_ptr<Player>> ptr_temp = ptr_vector;
 	sort(ptr_temp.begin(), ptr_temp.end(), poker_rank_ptr);
