@@ -46,6 +46,7 @@ protected:
 	Deck draw_deck;
 	vector<shared_ptr<Player>> ptr_vector;
 	unsigned int pot = 0;
+	bool all_fold;
 };
 
 bool poker_rank_ptr(const shared_ptr<Player>&, const shared_ptr<Player>&);
