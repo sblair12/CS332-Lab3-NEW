@@ -277,7 +277,6 @@ void Game::ante()
 void Game::chips_empty()
 {
 	for (size_t i = ptr_vector.size() - 1; i >= 0 && i <= ptr_vector.size(); --i) {
-		cout << "i: " << i << endl;
 		if (ptr_vector[i]->chips == 0) {
 			cout << ptr_vector[i]->name << ", you are out of chips." << endl;
 
