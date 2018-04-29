@@ -204,6 +204,10 @@ void TexasHoldEm::print_rankings()
 //			cout << ptr_vector[i]->name << " Max rank: " << max_hash << endl;
 		}
 	}
+	for (size_t i = 0; i < shared_cards.size(); i++) {
+		cout << shared_cards[i] << "\t";
+	}
+	cout << endl;
 	vector<shared_ptr<Player>> ptr_temp = ptr_vector;
 	sort(ptr_temp.begin(), ptr_temp.end(), poker_rank_ptr);
 	ptr_temp[0]->wins++;
@@ -276,47 +280,79 @@ int TexasHoldEm::round()
 	}
 
 	bet();
-	card_count = 0;
-	cout << endl;
-	cout << "The FLOP" << endl;
 
-	//Second turn (The "Flop", deal 3 cards to the middle)
-	while (card_count < second_deal) {
-		if (draw_deck.size() == 0) {
-			cout << "No more cards in the deck" << endl;
-			int i = deck_out_of_cards;
-			throw i;
+	int play_count = 0;
+	for (size_t i = 0; i < ptr_vector.size(); i++) {
+		if (!(ptr_vector[i]->fold)) {
+			play_count++;
 		}
-		shared_cards.push_back(draw_deck.deck.back());
-		draw_deck.deck.pop_back();
-		++card_count;
+	}
+	if (play_count == 1) {
+		all_fold = true;
 	}
 
-	bet();
+	if (!all_fold) {
+		card_count = 0;
+		cout << endl;
+		cout << "The FLOP" << endl;
 
-
-	//Third and fourth turns (The "Turn" and the "River", one card each to the middle)
-	for (int turn = 3; turn <= 4; turn++) {
-		if (turn == 3) {
-			cout << endl;
-			cout << "The TURN" << endl;
+		//Second turn (The "Flop", deal 3 cards to the middle)
+		while (card_count < second_deal) {
+			if (draw_deck.size() == 0) {
+				cout << "No more cards in the deck" << endl;
+				int i = deck_out_of_cards;
+				throw i;
+			}
+			shared_cards.push_back(draw_deck.deck.back());
+			draw_deck.deck.pop_back();
+			++card_count;
 		}
-		else {
-			cout << endl;
-			cout << "The RIVER" << endl;
-		}
-		if (draw_deck.size() == 0) {
-			cout << "No more cards in the deck" << endl;
-			int i = deck_out_of_cards;
-			throw i;
-		}
-		shared_cards.push_back(draw_deck.deck.back());
-		draw_deck.deck.pop_back();
-		++card_count;
 
 		bet();
-	}
+		play_count = 0;
+		for (size_t i = 0; i < ptr_vector.size(); i++) {
+			if (!(ptr_vector[i]->fold)) {
+				play_count++;
+			}
+		}
+		if (play_count == 1) {
+			all_fold = true;
+		}
 
+		//Third and fourth turns (The "Turn" and the "River", one card each to the middle)
+		for (int turn = 3; turn <= 4; turn++) {
+			if (!all_fold) {
+				if (turn == 3) {
+					cout << endl;
+					cout << "The TURN" << endl;
+				}
+				else {
+					cout << endl;
+					cout << "The RIVER" << endl;
+				}
+				if (draw_deck.size() == 0) {
+					cout << "No more cards in the deck" << endl;
+					int i = deck_out_of_cards;
+					throw i;
+				}
+				shared_cards.push_back(draw_deck.deck.back());
+				draw_deck.deck.pop_back();
+				++card_count;
+
+				bet();
+				play_count = 0;
+				for (size_t i = 0; i < ptr_vector.size(); i++) {
+					if (!(ptr_vector[i]->fold)) {
+						play_count++;
+					}
+				}
+				if (play_count == 1) {
+					all_fold = true;
+				}
+			}
+		}
+		
+	}
 
 	return 0;
 }
