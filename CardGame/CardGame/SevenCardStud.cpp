@@ -19,7 +19,7 @@ using namespace std;
 
 const unsigned int first_deal = 3;
 const unsigned int middle_deal = 1;
-vector<bool> faceup_cards = { false, false, true, true, true, true, false };
+const vector<bool> faceup_cards = { false, false, true, true, true, true, false };
 
 SevenCardStud::SevenCardStud()
 {

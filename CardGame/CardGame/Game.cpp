@@ -12,6 +12,7 @@
 #include "Game.h"
 #include "FiveCardDraw.h"
 #include "SevenCardStud.h"
+#include "TexasHoldEm.h"
 #include "Deck.h"
 #include "Parse.h"
 
@@ -21,7 +22,7 @@
 using namespace std;
 
 const unsigned int ante_amount = 1;
-const vector<string> game_string = { "FiveCardDraw", "fivecarddraw", "SevenCardStud", "sevencardstud" };
+const vector<string> game_string = { "FiveCardDraw", "fivecarddraw", "SevenCardStud", "sevencardstud", "TexasHoldEm", "texasholdem" };
 
 //Initialize game_ptr for use
 shared_ptr<Game> Game::game_ptr;
@@ -55,6 +56,9 @@ void Game::start_game(const string game)
 				}
 				if (game_string[i] == "SevenCardStud" || game_string[i] == "sevencardstud") {
 					game_ptr = make_shared<SevenCardStud>();
+				}
+				if (game_string[i] == "TexasHoldEm" || game_string[i] == "texasholdem") {
+					game_ptr = make_shared<TexasHoldEm>();
 				}
 				cout << "Playing: " << game_string[i] << endl;
 			}

@@ -22,6 +22,7 @@ private:
 	friend class Hand;
 	friend class FiveCardDraw;
 	friend class SevenCardStud;
+	friend class TexasHoldEm;
 public:
 	Deck();
 	Deck(char *);
