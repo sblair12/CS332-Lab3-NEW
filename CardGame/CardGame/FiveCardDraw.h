@@ -18,13 +18,13 @@ public:
 	void remove_cards(vector<size_t> &, Player &);
 	virtual void bet();
 	virtual void print_rankings();
-	virtual int before_turn(Player &);
-	virtual int turn(Player &);
-	virtual int after_turn(Player &);
 	virtual int before_round();
 	virtual int round();
 	virtual int after_round();
 protected:
+	int before_turn(Player &);
+	int turn(Player &);
+	int after_turn(Player &);
 	Deck discard_deck;
 
 	//Ask players if they want to leave

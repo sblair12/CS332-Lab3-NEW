@@ -34,9 +34,6 @@ public:
 	//Pure virtual methods
 	virtual void bet() = 0;
 	virtual void print_rankings() = 0;
-	virtual int before_turn(Player &) = 0;
-	virtual int turn(Player &) = 0;
-	virtual int after_turn(Player &) = 0;
 	virtual int before_round() = 0;
 	virtual int round() = 0;
 	virtual int after_round() = 0;

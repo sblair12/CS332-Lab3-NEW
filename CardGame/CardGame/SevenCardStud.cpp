@@ -237,22 +237,6 @@ void SevenCardStud::print_rankings()
 	}
 }
 
-
-int SevenCardStud::before_turn(Player &)
-{
-	return 0;
-}
-
-int SevenCardStud::turn(Player &)
-{
-	return 0;
-}
-
-int SevenCardStud::after_turn(Player &)
-{
-	return 0;
-}
-
 int SevenCardStud::before_round()
 {
 	ante();
