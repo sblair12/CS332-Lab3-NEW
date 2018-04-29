@@ -173,33 +173,35 @@ void SevenCardStud::bet()
 void SevenCardStud::print_rankings()
 {
 	vector<Hand> rank_hands;
-	for (int i = 0; i < ptr_vector.size(); ++i) {
-		Hand pointer = ptr_vector[i]->hand;
-		Hand ranked = pointer;
-		Hand holder = ranked;
-		Hand temp = ranked;
-		Hand final_hand;
-		int max_hash = 0;
-		int max_poker = 0;
+	if (!all_fold) {
+		for (int i = 0; i < ptr_vector.size(); ++i) {
+			Hand pointer = ptr_vector[i]->hand;
+			Hand ranked = pointer;
+			Hand holder = ranked;
+			Hand temp = ranked;
+			Hand final_hand;
+			int max_hash = 0;
+			int max_poker = 0;
 
-		do {
-			next_permutation(ranked.hand.begin(), ranked.hand.end());
-			vector<Card> to_rank(ranked.hand.begin(), ranked.hand.begin() + 5);
-			sort(to_rank.begin(), to_rank.end());
-			holder.hand = to_rank;
-			rankHand(holder);
-			if (holder.hash >= max_hash) {
-				max_hash = holder.get_ranking();
-				max_poker = holder.get_poker();
-				final_hand = holder;
-			}
-		} while (ranked != temp);
-		rank_hands.push_back(final_hand);
-		sort(rank_hands.begin(), rank_hands.end(), poker_rank);
-		ptr_vector[i]->hand.set_poker(max_poker);
-		ptr_vector[i]->hand.set_ranking(max_hash);
-		cout << ptr_vector[i]->name << " Max rank: " << max_hash << endl;
-		//rankHand(ptr_vector[i]->hand);
+			do {
+				next_permutation(ranked.hand.begin(), ranked.hand.end());
+				vector<Card> to_rank(ranked.hand.begin(), ranked.hand.begin() + 5);
+				sort(to_rank.begin(), to_rank.end());
+				holder.hand = to_rank;
+				rankHand(holder);
+				if (holder.hash >= max_hash) {
+					max_hash = holder.get_ranking();
+					max_poker = holder.get_poker();
+					final_hand = holder;
+				}
+			} while (ranked != temp);
+			rank_hands.push_back(final_hand);
+			sort(rank_hands.begin(), rank_hands.end(), poker_rank);
+			ptr_vector[i]->hand.set_poker(max_poker);
+			ptr_vector[i]->hand.set_ranking(max_hash);
+			cout << ptr_vector[i]->name << " Max rank: " << max_hash << endl;
+			//rankHand(ptr_vector[i]->hand);
+		}
 	}
 	vector<shared_ptr<Player>> ptr_temp = ptr_vector;
 	sort(ptr_temp.begin(), ptr_temp.end(), poker_rank_ptr);
@@ -215,7 +217,9 @@ void SevenCardStud::print_rankings()
 	cout << "\t won " << pot << " chips!" << endl;
 	cout << "Wins:\t" << ptr_temp[0]->wins << "\tLosses: " << ptr_temp[0]->losses << "\tChips: " << ptr_temp[0]->chips << endl;
 	cout << ptr_temp[0]->hand << endl;
-	cout << rank_hands[0] << "\t" << poker_text[ptr_temp[0]->hand.get_poker()] << endl;
+	if (!all_fold) {
+		cout << rank_hands[0] << "\t" << poker_text[ptr_temp[0]->hand.get_poker()] << endl;
+	}
 
 	for (int i = 1; i < ptr_temp.size(); ++i) {
 		if (i == ptr_temp.size() - 1) {
@@ -281,7 +285,6 @@ int SevenCardStud::round()
 	if (play_count == 1) {
 		all_fold = true;
 	}
-
 	if (!all_fold) {
 		index = (dealer_index + 1) % ptr_vector.size();
 		card_count = 0;
