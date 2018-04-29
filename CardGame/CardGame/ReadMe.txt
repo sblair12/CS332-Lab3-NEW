@@ -5,7 +5,8 @@
 
 For this lab, we implemented a program to:
 	- play a game called Five Card Draw as instructed
-	- play another game called Seven Card Stud as instructed
+	- play a game called Seven Card Stud as instructed
+	- play a game called Texas Hold Em as instructed
 
 For method functions see comments in source files
 
@@ -888,6 +889,7 @@ Produced:
 	Invalid name: joel
 }
 
-16. {
-	
-}
+
+
+EXTRA CREDIT (Texas Hold 'EM):
+
