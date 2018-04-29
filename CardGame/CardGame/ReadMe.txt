@@ -859,9 +859,6 @@ Produced:
 
 	Pot: 3
 
-	joel Max rank: 197
-	steven Max rank: 435
-	shane Max rank: 337
 	steven   won 3 chips!
 	Wins:   3       Losses: 0       Chips: 26
 	2D      3D      8C      8H      9H      9S      KH
@@ -889,7 +886,738 @@ Produced:
 	Invalid name: joel
 }
 
+16. {
+**checking to see if another game can start
+"cardgame sevencardstud shane steven"
+Produced:
+	Does any Player want to leave? (Y/n)
+	y
+	Which Players would like to leave? (separate names with spaces, ex: joe bob bill
+	ybob)
+	shane joel steven
+	Finding: shane
+	Bye shane!
+	Finding: joel
+	Bye joel!
+	Finding: steven
+	Bye steven!
+	Do any new Players want to join? (Y/n)
+	n
+
+
+	Not enough Players, ending game...
+	Game ended!
+
+	Would you like to play another game? (Y/n)
+	y
+	What game would you like to play?
+	texasholdem
+	Playing: texasholdem
+	Added: joel     Chips: 15
+	Added: shane    Chips: 15
+	Added: steven   Chips: 30
+	Ante:
+	1 chip(s) from joel
+	1 chip(s) from shane
+	1 chip(s) from steven
+	Pot: 3
+
+
+	shane   7D      AC
+	Chips: 14
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+
+
+	^C
+	C:\Users\lee.steven\Source\Repos\CS332-Lab3-NEW\CardGame\x64\Debug>cardgame seve
+	ncardstud shane steven
+	Playing: sevencardstud
+	Added: shane    Chips: 20
+	Added: steven   Chips: 20
+	Ante:
+	1 chip(s) from shane
+	1 chip(s) from steven
+	Pot: 2
+
+	shane   *       *       KS
+
+	steven  8S      9C      10S
+	Chips: 19
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	steven  *       *       10S
+
+	shane   3C      10H     KS
+	Chips: 19
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	bet 2
+
+	shane   *       *       KS
+
+	steven  8S      9C      10S
+	Chips: 19       Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	fold
+
+	Pot: 4
+
+	shane    won 4 chips!
+	Wins:   1       Losses: 0       Chips: 21
+	3C      10H     KS
+
+	steven
+	Wins:   0       Losses: 1       Chips: 19
+	FOLD
+
+
+	Does any Player want to leave? (Y/n)
+	n
+	Do any new Players want to join? (Y/n)
+	n
+	Ante:
+	1 chip(s) from shane
+	1 chip(s) from steven
+	Pot: 2
+
+	steven  *       *       AD
+
+	shane   2D      QD      AC
+	Chips: 20
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	shane   *       *       AC
+
+	steven  10C     KD      AD
+	Chips: 18
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	fold
+
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	bet 2
+
+	steven  *       *       AD
+
+	shane   2D      QD      AC
+	Chips: 20       Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	fold
+
+	Pot: 4
+
+	steven   won 4 chips!
+	Wins:   1       Losses: 1       Chips: 20
+	10C     KD      AD
+
+	shane
+	Wins:   1       Losses: 1       Chips: 20
+	FOLD
+
+
+	Does any Player want to leave? (Y/n)
+	y
+	Which Players would like to leave? (separate names with spaces, ex: joe bob bill
+	ybob)
+	shane steven
+	Finding: shane
+	Bye shane!
+	Finding: steven
+	Bye steven!
+	Do any new Players want to join? (Y/n)
+	n
+
+
+	Not enough Players, ending game...
+	Game ended!
+
+	Would you like to play another game? (Y/n)
+	y
+	What game would you like to play?
+	fivecarddraw
+	Playing: fivecarddraw
+	Added: shane    Chips: 20
+	Added: steven   Chips: 20
+
+	Ante:
+	1 chip(s) from shane
+	1 chip(s) from steven
+	Pot: 2
+
+	steven  3H      4S      7D      10D     QH
+	Chips: 19
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	bet 2
+
+	shane   2S      4D      7H      10C     JS
+	Chips: 19       Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise 2
+
+	steven  3H      4S      7D      10D     QH
+	Chips: 19       Current Bet: 4
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	fold
+
+	Pot: 8
+
+	shane    won 8 chips!
+	Wins:   2       Losses: 1       Chips: 23
+	2S      4D      7H      10C     JS              High Card
+
+	steven
+	Wins:   1       Losses: 2       Chips: 17
+	FOLD
+
+
+	Does any Player want to leave? (Y/n)
+	y
+	Which Players would like to leave? (separate names with spaces, ex: joe bob bill
+	ybob)
+	steven shane
+	Finding: steven
+	Bye steven!
+	Finding: shane
+	Bye shane!
+	Do any new Players want to join? (Y/n)
+	y
+	Which Players would like to join? (separate names with spaces, ex: mao dan steve
+	bob)
+	n
+	Adding: n
+	Added: n        Chips: 20
+	Hi n!
+
+
+	Not enough Players, ending game...
+	Saving progress for last player
+	Finding: n
+	Bye n!
+	Game ended!
+
+	Would you like to play another game? (Y/n)
+	y
+	What game would you like to play?
+	texasholdem
+	Playing: texasholdem
+	Added: shane    Chips: 23
+	Added: steven   Chips: 17
+	Ante:
+	1 chip(s) from shane
+	1 chip(s) from steven
+	Pot: 2
+
+
+	steven  10C     QD
+	Chips: 16
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+
+
+	shane   4C      9C
+	Chips: 22
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	bet 2
+
+
+
+	steven  10C     QD
+	Chips: 16       Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	fold
+
+	Pot: 4
+
+
+	shane    won 4 chips!
+	Wins:   3       Losses: 1       Chips: 24
+	4C      9C
+
+	steven
+	Wins:   1       Losses: 3       Chips: 16
+	FOLD
+
+
+	Does any Player want to leave? (Y/n)
+	y
+	Which Players would like to leave? (separate names with spaces, ex: joe bob bill
+	ybob)
+	shane steven
+	Finding: shane
+	Bye shane!
+	Finding: steven
+	Bye steven!
+	Do any new Players want to join? (Y/n)
+	n
+
+
+	Not enough Players, ending game...
+	Game ended!
+
+	Would you like to play another game? (Y/n)
+	n
+	Bye bye
+
+}
 
 
 EXTRA CREDIT (Texas Hold 'EM):
+1. {
 
+"cardgame texasholdem steven shane"
+Produced:
+	Playing: texasholdem
+	Added: steven   Chips: 20
+	Added: shane    Chips: 20
+	Ante:
+	1 chip(s) from steven
+	1 chip(s) from shane
+	Pot: 2
+
+
+	shane   3C      4C
+	Chips: 19
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	bet 2
+
+
+
+	steven  3H      JD
+	Chips: 19       Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	fold
+
+	Pot: 4
+
+
+	shane    won 4 chips!
+	Wins:   1       Losses: 0       Chips: 21
+	3C      4C
+
+	steven
+	Wins:   0       Losses: 1       Chips: 19
+	FOLD
+
+}
+
+2.{
+"cardgame texasholdem steven shane joel daniel santa obama michelle sasha caitlyn barry bomo flash jomo pickle rick morty jankens jarknes jukens ki lee blaire kurenok vladimir shook shidel"
+Produced:
+	Playing: texasholdem
+	Added: steven   Chips: 20
+	Added: shane    Chips: 20
+	Added: joel     Chips: 20
+	Added: daniel   Chips: 20
+	Added: santa    Chips: 20
+	Added: obama    Chips: 20
+	Added: michelle Chips: 20
+	Added: sasha    Chips: 20
+	Added: caitlyn  Chips: 20
+	Added: barry    Chips: 20
+	Added: bomo     Chips: 20
+	Added: flash    Chips: 20
+	Added: jomo     Chips: 20
+	Added: pickle   Chips: 20
+	Added: rick     Chips: 20
+	Added: morty    Chips: 20
+	Added: jankens  Chips: 20
+	Added: jarknes  Chips: 20
+	Added: jukens   Chips: 20
+	Added: ki       Chips: 20
+	Added: lee      Chips: 20
+	Added: blaire   Chips: 20
+	Added: kurenok  Chips: 20
+	Added: vladimir Chips: 20
+	Added: shook    Chips: 20
+	Added: shidel   Chips: 20
+	Ante:
+	1 chip(s) from steven
+	1 chip(s) from shane
+	1 chip(s) from joel
+	1 chip(s) from daniel
+	1 chip(s) from santa
+	1 chip(s) from obama
+	1 chip(s) from michelle
+	1 chip(s) from sasha
+	1 chip(s) from caitlyn
+	1 chip(s) from barry
+	1 chip(s) from bomo
+	1 chip(s) from flash
+	1 chip(s) from jomo
+	1 chip(s) from pickle
+	1 chip(s) from rick
+	1 chip(s) from morty
+	1 chip(s) from jankens
+	1 chip(s) from jarknes
+	1 chip(s) from jukens
+	1 chip(s) from ki
+	1 chip(s) from lee
+	1 chip(s) from blaire
+	1 chip(s) from kurenok
+	1 chip(s) from vladimir
+	1 chip(s) from shook
+	1 chip(s) from shidel
+	Pot: 26
+
+	...
+
+
+	The FLOP
+	No more cards in the deck
+	Exception caught: 14
+}
+
+3. {
+
+"cardgame texasholdem steven shane joel"
+Produced:
+	Playing: texasholdem
+	Added: steven   Chips: 20
+	Added: shane    Chips: 20
+	Added: joel     Chips: 20
+	Ante:
+	1 chip(s) from steven
+	1 chip(s) from shane
+	1 chip(s) from joel
+	Pot: 3
+
+
+	shane   3S      JD
+	Chips: 19
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	bet 2
+
+
+
+	joel    3D      KC
+	Chips: 19       Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise 2
+
+
+
+	steven  9C      AS
+	Chips: 19       Current Bet: 4
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	check
+	Current Bet: 4
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	check
+	Current Bet: 4
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	check
+	Current Bet: 4
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	check
+	Current Bet: 4
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	call
+
+
+
+	shane   3S      JD
+	Chips: 19       Current Bet: 4
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	call
+
+	Pot: 15
+
+	The FLOP
+	2H      6S      8D
+
+	shane   3S      JD
+	Chips: 15
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	2H      6S      8D
+
+	joel    3D      KC
+	Chips: 15
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	2H      6S      8D
+
+	steven  9C      AS
+	Chips: 15
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	Pot: 15
+
+	The TURN
+	2H      6S      8D      JC
+
+	shane   3S      JD
+	Chips: 15
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	2H      6S      8D      JC
+
+	joel    3D      KC
+	Chips: 15
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	2H      6S      8D      JC
+
+	steven  9C      AS
+	Chips: 15
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	Pot: 15
+
+	The RIVER
+	2H      6S      8D      JC      9S
+
+	shane   3S      JD
+	Chips: 15
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	2H      6S      8D      JC      9S
+
+	joel    3D      KC
+	Chips: 15
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	2H      6S      8D      JC      9S
+
+	steven  9C      AS
+	Chips: 15
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	Pot: 15
+
+	2H      6S      8D      JC      9S
+	shane    won 15 chips!
+	Wins:   1       Losses: 0       Chips: 30
+	3S      JD
+	2H      3S      6S      JC      JD              One Pair
+
+	steven
+	Wins:   0       Losses: 1       Chips: 15
+	9C      AS
+	2H      6S      8D      9C      9S              One Pair
+
+	joel
+	Wins:   0       Losses: 1       Chips: 15
+	3D      KC
+	2H      6S      8D      9S      JC              High Card
+
+
+	Does any Player want to leave? (Y/n)
+	b
+	Does any Player want to leave? (Y/n)
+	n
+	Do any new Players want to join? (Y/n)
+	n
+}
+
+3. {
+
+"cardgame texasholdem joel shane steven"
+Produced:
+	Playing: texasholdem
+	Added: joel     Chips: 20
+	Added: shane    Chips: 20
+	Added: steven   Chips: 20
+	Ante:
+	1 chip(s) from joel
+	1 chip(s) from shane
+	1 chip(s) from steven
+	Pot: 3
+
+
+	shane   5H      6C
+	Chips: 19
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+
+
+	steven  7C      9C
+	Chips: 19
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+
+
+	joel    3D      JC
+	Chips: 19
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	bet 2
+
+
+
+	shane   5H      6C
+	Chips: 19       Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	raise 2
+
+
+
+	steven  7C      9C
+	Chips: 19       Current Bet: 4
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	call
+
+
+
+	joel    3D      JC
+	Chips: 19       Current Bet: 4
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	call
+
+	Pot: 15
+
+	The FLOP
+	JH      9H      AD
+
+	shane   5H      6C
+	Chips: 15
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	JH      9H      AD
+
+	steven  7C      9C
+	Chips: 15
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	bet 2
+
+	JH      9H      AD
+
+	joel    3D      JC
+	Chips: 15       Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	fold
+
+	JH      9H      AD
+
+	shane   5H      6C
+	Chips: 15       Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	fold
+
+	Pot: 17
+
+	JH      9H      AD
+	steven   won 17 chips!
+	Wins:   1       Losses: 0       Chips: 30
+	7C      9C
+
+	joel
+	Wins:   0       Losses: 1       Chips: 15
+	FOLD
+
+	shane
+	Wins:   0       Losses: 1       Chips: 15
+	FOLD
+
+
+	Does any Player want to leave? (Y/n)
+	y
+	Which Players would like to leave? (separate names with spaces, ex: joe bob bill
+	ybob)
+	shane joel steven
+	Finding: shane
+	Bye shane!
+	Finding: joel
+	Bye joel!
+	Finding: steven
+	Bye steven!
+	Do any new Players want to join? (Y/n)
+	n
+
+
+	Not enough Players, ending game...
+	Game ended!
+
+	Would you like to play another game? (Y/n)
+	y
+	What game would you like to play?
+	texasholdem
+	Playing: texasholdem
+	Added: joel     Chips: 15
+	Added: shane    Chips: 15
+	Added: steven   Chips: 30
+	Ante:
+	1 chip(s) from joel
+	1 chip(s) from shane
+	1 chip(s) from steven
+	Pot: 3
+
+
+	shane   7D      AC
+	Chips: 14
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+}
