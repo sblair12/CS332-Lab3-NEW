@@ -263,6 +263,7 @@ void Game::players_join()
 void Game::ante()
 {
 	pot = 0;
+	all_fold = false;
 	cout << "Ante:" << endl;
 	for (int i = 0; i < ptr_vector.size(); ++i) {
 		cout << ante_amount << " chip(s) from " << ptr_vector[i]->name << endl;
@@ -275,10 +276,7 @@ void Game::ante()
 
 void Game::chips_empty()
 {
-	cout << "Size : " << ptr_vector.size() << endl;
-	for (int i = ptr_vector.size() - 1; i >= 0; --i) {
-		cout << "i= " << i << endl;
-		cout << ptr_vector[i]->name << "\t Chips: " << ptr_vector[i]->chips << endl;
+	for (size_t i = ptr_vector.size() - 1; i >= 0; --i) {
 		if (ptr_vector[i]->chips == 0) {
 			cout << ptr_vector[i]->name << ", you are out of chips." << endl;
 

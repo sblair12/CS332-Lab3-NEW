@@ -173,10 +173,9 @@ void FiveCardDraw::bet()
 			pot += ptr_vector[i]->bet;
 			ptr_vector[i]->chips -= ptr_vector[i]->bet;
 		}
-		cout << ptr_vector[i]->name << " " << ptr_vector[i]->chips << endl;
-		cout << "Pot: " << pot << endl;
 		ptr_vector[i]->bet = 0;
 	}
+	cout << "Pot: " << pot << endl;
 }
 
 void FiveCardDraw::print_rankings()
@@ -380,23 +379,34 @@ int FiveCardDraw::before_round()
 
 	cout << endl;
 	bet();
-
-	for (size_t i = 0; i < ptr_vector.size(); ++i) {
-		try {
-			if (ptr_vector[index]->fold == false) {
-				before_turn(*ptr_vector[index].get());
-			}
-			else {
-				cout << endl;
-				cout << endl;
-				cout << ptr_vector[index]->name << "\t" << "FOLD" << endl;
-				cout << endl;
-				cout << endl;
-			}
-			index = (index + 1) % ptr_vector.size();
+	int fold_count = 0;
+	for (size_t i = 0; i < ptr_vector.size(); i++) {
+		if (ptr_vector[i]->fold) {
+			fold_count++;
 		}
-		catch (int i) {
-			throw i;
+	}
+	if (fold_count == 1) {
+		all_fold = true;
+	}
+
+	if (!all_fold) {
+		for (size_t i = 0; i < ptr_vector.size(); ++i) {
+			try {
+				if (ptr_vector[index]->fold == false) {
+					before_turn(*ptr_vector[index].get());
+				}
+				else {
+					cout << endl;
+					cout << endl;
+					cout << ptr_vector[index]->name << "\t" << "FOLD" << endl;
+					cout << endl;
+					cout << endl;
+				}
+				index = (index + 1) % ptr_vector.size();
+			}
+			catch (int i) {
+				throw i;
+			}
 		}
 	}
 	return 0;
@@ -404,19 +414,21 @@ int FiveCardDraw::before_round()
 
 int FiveCardDraw::round()
 {
-	size_t index = (dealer_index + 1) % ptr_vector.size();
-	for (size_t i = 0; i < ptr_vector.size(); ++i) {
-		try {
-			turn(*ptr_vector[index].get());
-			index = (index + 1) % ptr_vector.size();
+	if (!all_fold) {
+		size_t index = (dealer_index + 1) % ptr_vector.size();
+		for (size_t i = 0; i < ptr_vector.size(); ++i) {
+			try {
+				turn(*ptr_vector[index].get());
+				index = (index + 1) % ptr_vector.size();
+			}
+			catch (int i) {
+				throw i;
+			}
 		}
-		catch (int i) {
-			throw i;
-		}
+		cout << endl;
+		cout << endl;
+		bet();
 	}
-	cout << endl;
-	cout << endl;
-	bet();
 	return 0;
 }
 
