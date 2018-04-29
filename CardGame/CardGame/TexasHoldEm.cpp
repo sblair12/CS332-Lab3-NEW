@@ -198,6 +198,7 @@ int TexasHoldEm::round()
 	}
 
 	bet();
+	card_count = 0;
 
 	//Second turn (The "Flop", deal 3 cards to the middle)
 	while (card_count < second_deal) {
@@ -208,6 +209,7 @@ int TexasHoldEm::round()
 		}
 		shared_cards.push_back(draw_deck.deck.back());
 		draw_deck.deck.pop_back();
+		++card_count;
 	}
 
 	bet();
@@ -221,6 +223,7 @@ int TexasHoldEm::round()
 		}
 		shared_cards.push_back(draw_deck.deck.back());
 		draw_deck.deck.pop_back();
+		++card_count;
 
 		bet();
 	}
