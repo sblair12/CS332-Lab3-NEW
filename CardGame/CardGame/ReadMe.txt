@@ -12,6 +12,7 @@ For method functions see comments in source files
 NOTE:	Selections require space separated items, without an extra space at the end, for input to be valid.
 		If too many or too few items are given, the program will ask for the selections to be input again.
 		This is the intended functionality.
+		Computer from last lab is not functional for SevenCardStud.
 
 Error Codes:
 	0 - No runtime errors
@@ -392,4 +393,43 @@ Produced:
 	 chips)
 	 
 	 ...
+}
+
+10. {
+"cardgame sevencardstud"
+Produced:
+	Usage: cardgame <game_name> <player1> <player2> ...
+					Run this program with one argument for a game name and 2 or more arguments for player names
+					(ex: cardgame fivecarddraw billybob Mao)
+}
+
+11. {
+
+"cardgame sevencardstud joel shane steven daniel mao lee bear rasputin"
+Produced:
+(top was truncated b/c too many lines)
+...
+Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+check
+
+joel    *       *       7S      10H     JD      AC
+shane   *       *       6H      7H      9H      JS
+daniel  *       *       6D      6S      8D      KD
+mao     *       *       JC      QD      AD      AH
+lee     *       *       9D      10C     10D     KC
+bear    *       *       QH      QS      KS      AS
+rasputin        *       *       4S      5S      8C      9C
+
+steven  2D      5D      6C      7D      8S      9S
+Chips: 17
+
+Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+check
+
+Pot: 24
+No more cards in the deck
+Exception caught: 14
+}
+
+12. {
 }
