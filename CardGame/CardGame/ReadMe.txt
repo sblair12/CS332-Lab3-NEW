@@ -609,4 +609,285 @@ Produced:
 }
 
 13. {
+
+"cardgame sevencardstud joel steven shane"
+Produced:
+	Playing: sevencardstud
+	Added: joel     Chips: 19
+	Added: steven   Chips: 22
+	Added: shane    Chips: 19
+	Ante:
+	1 chip(s) from joel
+	1 chip(s) from steven
+	1 chip(s) from shane
+	Pot: 3
+
+	joel    *       *       6S
+	shane   *       *       8C
+
+	steven  2H      JC      QS
+	Chips: 21
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	bet 2
+
+	joel    *       *       6S
+	steven  *       *       QS
+
+	shane   5H      7C      8C
+	Chips: 18       Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	fold
+
+	steven  *       *       QS
+	shane   *       *       8C
+
+	joel    4H      6D      6S
+	Chips: 18       Current Bet: 2
+
+	Would you like to 'fold', 'raise', or 'call'? (ex: 'raise 2', the max raise is 2
+	 chips)
+	fold
+
+	Pot: 5
+
+	steven   won 5 chips!
+	Wins:   2       Losses: 0       Chips: 24
+	2H      JC      QS
+
+	joel
+	Wins:   0       Losses: 2       Chips: 18
+	FOLD
+
+	shane
+	Wins:   0       Losses: 2       Chips: 18
+	FOLD
+
+
+	Does any Player want to leave? (Y/n)
+	yes
+	Does any Player want to leave? (Y/n)
+	y
+	Which Players would like to leave? (separate names with spaces, ex: joe bob bill
+	ybob)
+	shane joel steven
+	Finding: shane
+	Bye shane!
+	Finding: joel
+	Bye joel!
+	Finding: steven
+	Bye steven!
+	Do any new Players want to join? (Y/n)
+	n
+
+
+	Not enough Players, ending game...
+	Game ended!
+
+	Would you like to play another game? (Y/n)
+	n
+	Bye bye
+}
+
+14. {
+
+"cardgame sevencardstud joel steven shane joel"
+Produced:
+	Playing: sevencardstud
+	Added: joel     Chips: 18
+	Added: steven   Chips: 24
+	Added: shane    Chips: 18
+	joel is already playing
+	Exception caught: 13
+}
+
+15. { 
+
+"cardgame sevencardstud joel steven shane"
+Produced:
+	Playing: sevencardstud
+	Added: joel     Chips: 18
+	Added: steven   Chips: 24
+	Added: shane    Chips: 18
+	Ante:
+	1 chip(s) from joel
+	1 chip(s) from steven
+	1 chip(s) from shane
+	Pot: 3
+
+	joel    *       *       5C
+	shane   *       *       JD
+
+	steven  2D      3D      9H
+	Chips: 23
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	joel    *       *       5C
+	steven  *       *       9H
+
+	shane   6C      7D      JD
+	Chips: 17
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	steven  *       *       9H
+	shane   *       *       JD
+
+	joel    2S      4S      5C
+	Chips: 17
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	Pot: 3
+	joel    *       *       4S      5C
+	shane   *       *       7D      JD
+
+	steven  2D      3D      8H      9H
+	Chips: 23
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	joel    *       *       4S      5C
+	steven  *       *       8H      9H
+
+	shane   2C      6C      7D      JD
+	Chips: 17
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	steven  *       *       8H      9H
+	shane   *       *       7D      JD
+
+	joel    2S      4D      4S      5C
+	Chips: 17
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	Pot: 3
+	joel    *       *       4S      5C      QC
+	shane   *       *       7D      JD      KD
+
+	steven  2D      3D      8H      9H      9S
+	Chips: 23
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	joel    *       *       4S      5C      QC
+	steven  *       *       8H      9H      9S
+
+	shane   2C      6C      7D      JD      KD
+	Chips: 17
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	steven  *       *       8H      9H      9S
+	shane   *       *       7D      JD      KD
+
+	joel    2S      4D      4S      5C      QC
+	Chips: 17
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	Pot: 3
+	joel    *       *       4D      4S      5C      QC
+	shane   *       *       7D      JD      KD      AD
+
+	steven  2D      3D      8C      8H      9H      9S
+	Chips: 23
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	joel    *       *       4D      4S      5C      QC
+	steven  *       *       8C      8H      9H      9S
+
+	shane   2C      6C      7D      JD      KD      AD
+	Chips: 17
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	steven  *       *       8C      8H      9H      9S
+	shane   *       *       7D      JD      KD      AD
+
+	joel    2S      3S      4D      4S      5C      QC
+	Chips: 17
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	Pot: 3
+	joel    *       *       4D      4S      5C      10H     *
+	shane   *       *       7D      JD      KD      AD      *
+
+	steven  2D      3D      8C      8H      9H      9S      KH
+	Chips: 23
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	joel    *       *       4D      4S      5C      10H     *
+	steven  *       *       8C      8H      9H      9S      *
+
+	shane   2C      6C      7D      JD      KD      AD      AS
+	Chips: 17
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	steven  *       *       8C      8H      9H      9S      *
+	shane   *       *       7D      JD      KD      AD      *
+
+	joel    2S      3S      4D      4S      5C      10H     QC
+	Chips: 17
+
+	Would you like to 'check' or 'bet'? (ex: 'bet 2', the max bet is 2 chips)
+	check
+
+	Pot: 3
+
+	joel Max rank: 197
+	steven Max rank: 435
+	shane Max rank: 337
+	steven   won 3 chips!
+	Wins:   3       Losses: 0       Chips: 26
+	2D      3D      8C      8H      9H      9S      KH
+	8C      8H      9H      9S      KH              Two Pairs
+
+	shane
+	Wins:   0       Losses: 3       Chips: 17
+	2C      6C      7D      JD      KD      AD      AS
+	7D      JD      KD      AD      AS              One Pair
+
+	joel
+	Wins:   0       Losses: 3       Chips: 17
+	2S      3S      4D      4S      5C      10H     QC
+	2S      3S      4D      4S      5C              One Pair
+
+
+	Does any Player want to leave? (Y/n)
+	n
+	Do any new Players want to join? (Y/n)
+	y
+	Which Players would like to join? (separate names with spaces, ex: mao dan steve
+	bob)
+	joel
+	Adding: joel
+	Invalid name: joel
+}
+
+16. {
+	
 }
