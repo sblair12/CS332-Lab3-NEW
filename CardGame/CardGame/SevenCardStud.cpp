@@ -172,11 +172,13 @@ void SevenCardStud::bet()
 
 void SevenCardStud::print_rankings()
 {
+	vector<Hand> rank_hands;
 	for (int i = 0; i < ptr_vector.size(); ++i) {
 		Hand pointer = ptr_vector[i]->hand;
 		Hand ranked = pointer;
 		Hand holder = ranked;
 		Hand temp = ranked;
+		Hand final_hand;
 		int max_hash = 0;
 		int max_poker = 0;
 
@@ -189,8 +191,11 @@ void SevenCardStud::print_rankings()
 			if (holder.hash > max_hash) {
 				max_hash = holder.get_ranking();
 				max_poker = holder.get_poker();
+				final_hand = holder;
 			}
 		} while (ranked != temp);
+		rank_hands.push_back(final_hand);
+		sort(rank_hands.begin(), rank_hands.end());
 		ptr_vector[i]->hand.set_poker(max_poker);
 		ptr_vector[i]->hand.set_ranking(max_hash);
 		cout << ptr_vector[i]->name << " Max rank: " << max_hash << endl;
@@ -209,7 +214,8 @@ void SevenCardStud::print_rankings()
 	}
 	cout << "\t won " << pot << " chips!" << endl;
 	cout << "Wins:\t" << ptr_temp[0]->wins << "\tLosses: " << ptr_temp[0]->losses << "\tChips: " << ptr_temp[0]->chips << endl;
-	cout << ptr_temp[0]->hand << "\t" << poker_text[ptr_temp[0]->hand.get_poker()] << endl;
+	cout << ptr_temp[0]->hand << endl;
+	cout << rank_hands[0] << "\t" << poker_text[ptr_temp[0]->hand.get_poker()] << endl;
 
 	for (int i = 1; i < ptr_temp.size(); ++i) {
 		if (i == ptr_temp.size() - 1) {
@@ -225,7 +231,8 @@ void SevenCardStud::print_rankings()
 		}
 		cout << "Wins:\t" << ptr_temp[i]->wins << "\tLosses: " << ptr_temp[i]->losses << "\tChips: " << ptr_temp[i]->chips << endl;
 		if (ptr_temp[i]->fold == false) {
-			cout << ptr_temp[i]->hand << "\t" << poker_text[ptr_temp[i]->hand.get_poker()] << endl;
+			cout << ptr_temp[i]->hand << endl;
+			cout << rank_hands[i] << "\t" << poker_text[ptr_temp[i]->hand.get_poker()] << endl;
 		}
 		else {
 			cout << "FOLD" << endl;
