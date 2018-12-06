@@ -1,4 +1,4 @@
-# CS332-Lab3
+# Poker CardGames
 
 // Shane Blair	- sblair@wustl.edu		-	448740
 // Steven Lee	- lee.steven@wustl.edu	-	448180
